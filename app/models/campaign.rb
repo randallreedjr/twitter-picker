@@ -3,6 +3,8 @@
   require 'json'
 class Campaign < ActiveRecord::Base
   has_many :tweets
+  has_many :winners
+  validates_presence_of :hashtag, :start_time, :end_time
 
 
   #attr_accessor :tweet, :winner, :created, :followers

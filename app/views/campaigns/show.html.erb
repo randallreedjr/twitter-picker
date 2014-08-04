@@ -30,5 +30,6 @@
   <%= "No tweets found" %>
 <% end %>
 
+<%= link_to 'Pick winner', campaign_winners_path(@campaign) %>
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
 <%= link_to 'Back', campaigns_path %>
