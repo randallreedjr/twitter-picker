@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hashtag:</strong>
+  <%= @campaign.hashtag %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @campaign.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @campaign.end_time %>
+</p>
+
+<% if @campaign.tweets.any? %>
+  <% @campaign.tweets.each do |tweet| %>
+    <p><%= tweet.text %></p>
+    <p><%= tweet.screen_name %></p>
+    <p><%= tweet.entry_time %></p>
+    <p><%= tweet.followers_count %></p>
+  <% end %>
+<% else %>
+  <%= "No tweets found" %>
+<% end %>
+
+<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
+<%= link_to 'Back', campaigns_path %>

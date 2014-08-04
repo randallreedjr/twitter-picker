@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hashtag:</strong>
+  <%= @search.hashtag %>
+</p>
+
+<% if @search.tweets.any? %>
+  <% @search.tweets do |tweet| %>
+    <p><%= @search.tweet %></p>
+    <p><%= @search.winner %></p>
+    <p><%= @search.created %></p>
+    <p><%= @search.followers %></p>
+  <% end %>
+<% else %>
+  <%= "No tweets found" %>
+<% end %>
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>
