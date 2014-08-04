@@ -26,7 +26,7 @@ class CampaignsController < ApplicationController
   # POST /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
-    if !@campaign.hashtag.start_with("#")
+    if !@campaign.hashtag.start_with?("#")
       @campaign = "#" + @campaign.hashtag
     end
 

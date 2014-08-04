@@ -10,8 +10,12 @@ class TwitterAPI
     @path    = "/1.1/search/tweets.json"
   end
 
-  def hashtag_search(hashtag)
-    query   = URI.encode_www_form("q" => hashtag)
+  def access_token
+    @access_token
+  end
+
+  def hashtag_search(hashtag, page)
+    query   = URI.encode_www_form("q" => hashtag,"count" => 100)
     address = URI("#{@baseurl}#{@path}?#{query}")
     request = Net::HTTP::Get.new address.request_uri
 
