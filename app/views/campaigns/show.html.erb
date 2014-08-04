@@ -16,12 +16,16 @@
 </p>
 
 <% if @campaign.tweets.any? %>
+  <ol>
   <% @campaign.tweets.each do |tweet| %>
-    <p><%= tweet.text %></p>
-    <p><%= tweet.screen_name %></p>
-    <p><%= tweet.entry_time %></p>
-    <p><%= tweet.followers_count %></p>
+    <li><%= tweet.text %></li>
+    <ul>
+      <li><%= tweet.screen_name %></li>
+      <li><%= tweet.entry_time %></li>
+      <li><%= tweet.followers_count %></li>
+    </ul>
   <% end %>
+  </ol>
 <% else %>
   <%= "No tweets found" %>
 <% end %>

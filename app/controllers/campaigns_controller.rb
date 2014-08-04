@@ -10,7 +10,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    @campaign.find_hashtags
+    @campaign.find_tweets
   end
 
   # GET /campaigns/new
