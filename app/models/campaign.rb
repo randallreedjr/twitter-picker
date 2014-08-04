@@ -11,12 +11,13 @@ class Campaign < ActiveRecord::Base
   # You will need to set your application type to
   # read/write on dev.twitter.com and regenerate your access
   # token.  Enter the new values here:
+    
     consumer_key = OAuth::Consumer.new(
-                  "vk591UPPhkvjE6ubSb5dyJciK",
-                  "eAwhXWZAciJDYk7e5FGKaROq15vmr6QzKRKaD0UeP1EjjXMnSx")
+                  ENV['TWITTER_API_KEY'],
+                  ENV['TWITTER_API_SECRET'])
     access_token = OAuth::Token.new(
-                  "2706806756-8GEjrtrGpAlxG3QYYGAEU4jJmrS9zBkmgx9kn7o",
-                  "8w7SELE3CQ32BDYbAmCZa6hJqRC83QN5XAFt2p6DTI5Xp")
+                  ENV['TWITTER_ACCESS_TOKEN'],
+                  ENV['TWITTER_ACCESS_TOKEN_SECRET'])
 
   # Note that the type of request has changed to POST.
   # The request parameters have also moved to the body
@@ -42,7 +43,7 @@ class Campaign < ActiveRecord::Base
     if response.code == '200' then
       tweets = JSON.parse(response.body)
       #index = rand(tweets["statuses"].count)
-      
+
       tweets["statuses"].each do |tweet|
         result = Tweet.new
         result.campaign_id = self.id
