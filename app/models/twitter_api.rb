@@ -1,8 +1,8 @@
 class TwitterAPI
   def initialize
     @consumer_key = OAuth::Consumer.new(
-                  ENV['TWITTER_API_KEY'],
-                  ENV['TWITTER_API_SECRET'])
+                  ENV['TWITTER_CONSUMER_KEY'],
+                  ENV['TWITTER_CONSUMER_SECRET'])
     @access_token = OAuth::Token.new(
                   ENV['TWITTER_ACCESS_TOKEN'],
                   ENV['TWITTER_ACCESS_TOKEN_SECRET'])
