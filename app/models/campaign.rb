@@ -2,6 +2,7 @@
   require 'oauth'
   require 'json'
 class Campaign < ActiveRecord::Base
+  belongs_to :user
   has_many :tweets
   has_many :prizes
   has_many :winners, through: :prizes
