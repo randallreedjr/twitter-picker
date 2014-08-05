@@ -16,6 +16,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new
   def new
     @campaign = Campaign.new
+    3.times { @campaign.prizes.build }
   end
 
   # GET /campaigns/1/edit
@@ -26,9 +27,12 @@ class CampaignsController < ApplicationController
   # POST /campaigns.json
   def create
     @campaign = Campaign.new(campaign_params)
+    @campaign.user_id = current_user.id
     if !@campaign.hashtag.start_with?("#")
-      @campaign = "#" + @campaign.hashtag
+      @campaign.hashtag = "#" + @campaign.hashtag
     end
+
+    binding.pry
 
     respond_to do |format|
       if @campaign.save
@@ -73,6 +77,6 @@ class CampaignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def campaign_params
-      params.require(:campaign).permit(:hashtag, :start_time, :end_time)
+      params.require(:campaign).permit(:hashtag, :start_time, :end_time, :prizes_attributes => [:name, :description])
     end
 end

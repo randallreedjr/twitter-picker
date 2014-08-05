@@ -1,5 +1,5 @@
 class Winner < ActiveRecord::Base
-  belongs_to :campaign
+  belongs_to :prize
   belongs_to :tweet
 
   def choose_winner

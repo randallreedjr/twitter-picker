@@ -3,8 +3,10 @@
   require 'json'
 class Campaign < ActiveRecord::Base
   has_many :tweets
-  has_many :winners
+  has_many :prizes
+  has_many :winners, through: :prizes
   validates_presence_of :hashtag, :start_time, :end_time
+  accepts_nested_attributes_for :prizes
 
   def find_tweets
     twitter = TwitterAPI.new

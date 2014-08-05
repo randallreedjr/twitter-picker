@@ -15,6 +15,14 @@
   <%= @campaign.end_time %>
 </p>
 
+<ul>
+<% @campaign.prizes.each do |prize| %>
+  <% if !prize.name.empty? %>
+  <li><%= prize.name %> - <%= prize.description %></li>
+  <% end %>
+<% end %>
+</ul>
+
 <% if @campaign.tweets.any? %>
   <ol>
   <% @campaign.tweets.each do |tweet| %>

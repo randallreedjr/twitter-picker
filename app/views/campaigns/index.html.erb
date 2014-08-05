@@ -25,5 +25,6 @@
 </table>
 
 <br>
-
+<% if logged_in? %>
 <%= link_to 'New Campaign', new_campaign_path %>
+<% end %>

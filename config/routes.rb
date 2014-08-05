@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   resources :campaigns do
     resources :winners
+    resources :prizes
   end
 
   resources :users

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805021037) do
+ActiveRecord::Schema.define(version: 20140805175621) do
 
   create_table "campaigns", force: true do |t|
     t.string   "hashtag"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20140805021037) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "initial_tweet_id"
+    t.integer  "user_id"
+  end
+
+  create_table "prizes", force: true do |t|
+    t.integer  "campaign_id"
+    t.integer  "winner_id"
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "searches", force: true do |t|
@@ -48,7 +58,6 @@ ActiveRecord::Schema.define(version: 20140805021037) do
   end
 
   create_table "winners", force: true do |t|
-    t.integer  "campaign_id"
     t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"

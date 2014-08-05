@@ -1,9 +1,12 @@
 digraph models_diagram {
 	graph[overlap=false, splines=true]
-	"Campaign" [shape=Mrecord, label="{Campaign|id :integer\lhashtag :string\lstart_time :datetime\lend_time :datetime\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Campaign" [shape=Mrecord, label="{Campaign|id :integer\lhashtag :string\lstart_time :datetime\lend_time :datetime\lcreated_at :datetime\lupdated_at :datetime\linitial_tweet_id :integer\l}"]
+	"Prize" [shape=Mrecord, label="{Prize|id :integer\lcampaign_id :integer\lwinner_id :integer\lname :string\ldescription :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
 	"Tweet" [shape=Mrecord, label="{Tweet|id :integer\ltext :string\lscreen_name :string\lentry_time :datetime\lfollowers_count :integer\lstatus_id :integer\lcreated_at :datetime\lupdated_at :datetime\lcampaign_id :integer\l}"]
-	"Winner" [shape=Mrecord, label="{Winner|id :integer\lcampaign_id :integer\ltweet_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
-	"Campaign" -> "Tweet" [arrowtail=odot, arrowhead=crow, dir=both color="#6337BE"]
-	"Campaign" -> "Winner" [arrowtail=odot, arrowhead=crow, dir=both color="#3798A0"]
-	"Tweet" -> "Winner" [arrowtail=odot, arrowhead=dot, dir=both color="#702887"]
+	"User" [shape=Mrecord, label="{User|id :integer\lscreen_name :string\lprovider :string\luid :string\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Winner" [shape=Mrecord, label="{Winner|id :integer\ltweet_id :integer\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Campaign" -> "Tweet" [arrowtail=odot, arrowhead=crow, dir=both color="#8F0256"]
+	"Campaign" -> "Prize" [arrowtail=odot, arrowhead=crow, dir=both color="#27342E"]
+	"Campaign" -> "Winner" [arrowtail=crow, arrowhead=crow, dir=both color="#1F63D1"]
+	"Tweet" -> "Winner" [arrowtail=odot, arrowhead=dot, dir=both color="#0E61F4"]
 }
