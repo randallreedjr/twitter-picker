@@ -25,10 +25,12 @@
     <%= f.label :end_time %><br>
     <%= f.datetime_select :end_time, :disabled => @campaign.over? %>
   </div>
+  <% if @campaign.id %>
   <div class="field">
     <%= f.check_box :completed %>
     <%= f.label :completed %>
   </div>
+  <% end %>
 
   <h2>Prizes</h2>
   <ul>

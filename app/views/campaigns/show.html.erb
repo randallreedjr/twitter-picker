@@ -28,6 +28,11 @@
 <% @campaign.prizes.each do |prize| %>
   <% if !prize.name.empty? %>
   <li><%= prize.name %> - <%= prize.description %></li>
+  <% if @campaign.over? && !prize.winner %>
+    <%= link_to 'Pick winner', campaign_prize_winners_path(@campaign, prize) %>
+  <% elsif @campaign.over? && prize.winner %>
+    won by @<%= prize.winner.tweet.screen_name %>
+  <% end %>
   <% end %>
 <% end %>
 </ul>
@@ -37,10 +42,8 @@
 | <%= link_to 'Load more tweets', refresh_tweets_path(@campaign) %>
 <% end %>
 <br>
-
-<%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
-<% if @campaign.over? && @campaign.prizes.any? %>
-| <%= link_to 'Pick winner', campaign_winners_path(@campaign) %>
+<% if @campaign.tweets.any? %>
+  <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
 <% end %>
 <br>
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |

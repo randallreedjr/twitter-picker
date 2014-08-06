@@ -21,7 +21,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns/new
   def new
     @campaign = Campaign.new
-    @campaign.prizes.build
+    3.times {@campaign.prizes.build}
   end
 
   # GET /campaigns/1/edit

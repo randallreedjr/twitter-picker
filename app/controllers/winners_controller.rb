@@ -1,9 +1,8 @@
 class WinnersController < ApplicationController
   def index
     @campaign = Campaign.find(params[:campaign_id])
-    @prize = Prize.find_by(campaign_id: @campaign.id, winner_id: nil)
+    @prize = Prize.find_by(campaign_id: @campaign.id, prize_id: params[:prize_id])
     if @prize
-      binding.pry
       @winner = Winner.new()
       @winner.tweet_id = @winner.choose_winner(@campaign.id).id
       @winner.save

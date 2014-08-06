@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   get 'tweets/index'
 
   resources :campaigns do
-    resources :winners
-    resources :prizes
+    resources :prizes do
+      resources :winners
+    end
     resources :tweets
   end
 

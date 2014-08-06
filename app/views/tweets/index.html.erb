@@ -1,12 +1,10 @@
 <% if @campaign.tweets.any? %>
+  <h2>Tweet List</h2>
+  <h4><%= link_to '<< Back to campaign', campaign_path(@campaign) %></h4>
   <ol>
   <% @campaign.tweets.each do |tweet| %>
-    <li><%= tweet.text %></li>
-    <ul>
-      <li><%= tweet.screen_name %></li>
-      <li><%= tweet.entry_time %></li>
-      <li><%= tweet.followers_count %></li>
-    </ul>
+    <% @tweet = tweet %>
+    <%= render 'show' %>
   <% end %>
   </ol>
 <% else %>
