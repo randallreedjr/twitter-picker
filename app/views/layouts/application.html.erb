@@ -10,7 +10,7 @@
 <body>
 <a href="/">Home</a>
 <% if logged_in? %>
-  <%= link_to current_user.screen_name, user_path(current_user) %>
+  <%= link_to current_user.screen_name, campaigns_path %>
   <%= link_to 'Log out', logout_path %>
 <% else %>
   <%= link_to 'Log in with Twitter', login_path %>

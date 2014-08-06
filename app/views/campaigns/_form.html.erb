@@ -10,18 +10,24 @@
       </ul>
     </div>
   <% end %>
-
+  <% if @campaign.over? %>
+  <h2>Campaign completed</h2>
+  <% end %>
   <div class="field">
     <%= f.label :hashtag %><br>
-    <%= f.text_field :hashtag %>
+    <%= f.text_field :hashtag, :readonly => @campaign.over? %>
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :start_time, :disabled => @campaign.over? %>
   </div>
   <div class="field">
     <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time %>
+    <%= f.datetime_select :end_time, :disabled => @campaign.over? %>
+  </div>
+  <div class="field">
+    <%= f.check_box :completed %>
+    <%= f.label :completed %>
   </div>
 
   <h2>Prizes</h2>

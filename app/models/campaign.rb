@@ -10,6 +10,10 @@ class Campaign < ActiveRecord::Base
   validates_uniqueness_of :hashtag
   accepts_nested_attributes_for :prizes
 
+  def over?
+    self.completed
+  end
+
   def find_tweets
     twitter = TwitterAPI.new
     start_time = self.start_time.strftime('%Y-%m-%d')

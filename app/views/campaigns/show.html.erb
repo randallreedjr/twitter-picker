@@ -14,6 +14,15 @@
   <strong>End time:</strong>
   <%= @campaign.end_time %>
 </p>
+<% if @campaign.over? %>
+<p>
+  <h3>Campaign completed</h3>
+</p>
+<% else %>
+<p>
+  <h3>Campaign ongoing</h3>
+</p>
+<% end %>
 
 <ul>
 <% @campaign.prizes.each do |prize| %>
@@ -23,10 +32,16 @@
 <% end %>
 </ul>
 
-<%= @campaign.tweets.count %> <%= "tweet".pluralize(@campaign.tweets.count) %> collected. | <%= link_to 'Load more tweets', refresh_tweets_path(@campaign) %>
+<%= @campaign.tweets.count %> <%= "tweet".pluralize(@campaign.tweets.count) %> collected. 
+<% if !@campaign.over? %>
+| <%= link_to 'Load more tweets', refresh_tweets_path(@campaign) %>
+<% end %>
 <br>
-<%= link_to 'View tweets', campaign_tweets_path(@campaign) %> |
-<%= link_to 'Pick winner', campaign_winners_path(@campaign) %>
+
+<%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
+<% if @campaign.over? && @campaign.prizes.any? %>
+| <%= link_to 'Pick winner', campaign_winners_path(@campaign) %>
+<% end %>
 <br>
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
 <%= link_to 'Back', campaigns_path %>

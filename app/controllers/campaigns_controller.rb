@@ -4,7 +4,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.json
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.where(user_id: current_user.id)
   end
 
   # GET /campaigns/1
@@ -80,6 +80,6 @@ class CampaignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def campaign_params
-      params.require(:campaign).permit(:hashtag, :start_time, :end_time, :prizes_attributes => [:id, :name, :description])
+      params.require(:campaign).permit(:hashtag, :start_time, :end_time, :completed, :prizes_attributes => [:id, :name, :description])
     end
 end
