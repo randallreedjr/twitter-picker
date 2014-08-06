@@ -14,7 +14,15 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    redirect_to root_url if !logged_in?
+    if logged_in?
+      @campaign = Campaign.find(params[:id])
+      if @campaign.user_id != current_user.id
+        session[:user_id] = nil
+        redirect_to root_url
+      end
+    else
+      redirect_to root_url 
+    end
   end
 
   def refresh
