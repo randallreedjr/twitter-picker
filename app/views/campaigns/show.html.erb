@@ -23,21 +23,10 @@
 <% end %>
 </ul>
 
-<% if @campaign.tweets.any? %>
-  <ol>
-  <% @campaign.tweets.each do |tweet| %>
-    <li><%= tweet.text %></li>
-    <ul>
-      <li><%= tweet.screen_name %></li>
-      <li><%= tweet.entry_time %></li>
-      <li><%= tweet.followers_count %></li>
-    </ul>
-  <% end %>
-  </ol>
-<% else %>
-  <%= "No tweets found" %>
-<% end %>
-
+<%= @campaign.tweets.count %> <%= "tweet".pluralize(@campaign.tweets.count) %> collected. | <%= link_to 'Load more tweets', refresh_tweets_path(@campaign) %>
+<br>
+<%= link_to 'View tweets', campaign_tweets_path(@campaign) %> |
 <%= link_to 'Pick winner', campaign_winners_path(@campaign) %>
+<br>
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
 <%= link_to 'Back', campaigns_path %>

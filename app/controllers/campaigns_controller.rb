@@ -10,12 +10,16 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
+  end
+
+  def refresh
+    set_campaign
     @campaign.find_tweets
+    redirect_to campaign_path(@campaign)
   end
 
   # GET /campaigns/new
   def new
-    
     @campaign = Campaign.new
     @campaign.prizes.build
   end
