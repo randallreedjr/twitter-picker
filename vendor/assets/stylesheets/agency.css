@@ -3,6 +3,9 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+.button-coloring {
+    color:rgb(0,0,255);
+}
 
 body {
     overflow-x: hidden;
@@ -125,7 +128,7 @@ fieldset[disabled] .btn-primary.active {
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 18px;
     font-weight: 700;
-    color: #fff;
+    color: black;
     background-color: #FDFF2A;
 }
 
@@ -163,6 +166,7 @@ fieldset[disabled] .btn-xl.active {
     border-color: #fed136;
     background-color: #fed136;
 }
+
 
 .btn-xl .badge {
     color: #fed136;
