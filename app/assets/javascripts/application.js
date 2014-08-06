@@ -10,7 +10,11 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery-1.11.0
 //= require jquery_ujs
-//= require bootstrap
-//= require_tree .
+//= require bootstrap.min
+//= require cbpAnimatedHeader
+//= require classie
+//= require contact_me
+//= require jqBootstrapValidation
+//= require agency

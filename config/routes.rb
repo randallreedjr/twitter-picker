@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :tweets
   end
 
-  resources :users
+  resources :users  
 
   root 'pages#home'
   get '/login' => 'sessions#new'
