@@ -1,3 +1,4 @@
+<%= render "layouts/appnav" %>
 <% if @campaign.tweets.any? %>
   <h2>Tweet List</h2>
   <h4><%= link_to '<< Back to campaign', campaign_path(@campaign) %></h4>

@@ -1,3 +1,5 @@
+<%= render "layouts/appnav" %>
+<div class="container col-lg-12">
 <h1>Listing campaigns</h1>
 
 <table>
@@ -35,3 +37,4 @@
 <% if logged_in? %>
 <%= link_to 'New Campaign', new_campaign_path %>
 <% end %>
+</div>

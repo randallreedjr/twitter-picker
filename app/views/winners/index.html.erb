@@ -1,3 +1,4 @@
+<%= render "layouts/appnav" %>
 <h2><%= @campaign.hashtag %></h2>
 <h4><%= link_to '<< Back to campaign', campaign_path(@campaign) %></h4>
 <% @winners.each do |winner| %>
