@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users
 
-  root 'campaigns#index'
+  root 'pages#home'
   get '/login' => 'sessions#new'
   get '/auth/twitter/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
