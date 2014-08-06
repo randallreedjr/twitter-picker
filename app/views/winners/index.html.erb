@@ -1,3 +1,11 @@
-<%= @winner.tweet.screen_name %> tweeted:
+<h2><%= @campaign.hashtag %></h2>
+<h4><%= link_to '<< Back to campaign', campaign_path(@campaign) %></h4>
+<% @winners.each do |winner| %>
+<p>
+<%= winner.prize.name %> - <%= winner.prize.description %>
+<br>Won by:<br>
+<%= winner.tweet.screen_name %> tweeted:
 <br>
-<%= @winner.tweet.text %>
+<%= winner.tweet.text %>
+</p>
+<% end %>
