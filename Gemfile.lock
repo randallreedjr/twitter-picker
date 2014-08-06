@@ -71,6 +71,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    font-awesome-rails (4.1.0.0)
+      railties (>= 3.2, < 5.0)
     formatador (0.2.5)
     google-analytics-rails (0.0.6)
     guard (2.6.1)
@@ -239,6 +241,7 @@ DEPENDENCIES
   database_cleaner
   factory_girl_rails
   figaro
+  font-awesome-rails
   google-analytics-rails
   guard-rspec
   jbuilder (~> 2.0)

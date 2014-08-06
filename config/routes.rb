@@ -6,11 +6,13 @@ Rails.application.routes.draw do
   end
 
   resources :users
-
-  root 'campaigns#index'
+  
+  root 'pages#home'
   get '/login' => 'sessions#new'
   get '/auth/twitter/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+  get '/home' => 'pages#home'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
