@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805175621) do
+ActiveRecord::Schema.define(version: 20140806180909) do
 
   create_table "campaigns", force: true do |t|
     t.string   "hashtag"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20140805175621) do
     t.datetime "updated_at"
     t.integer  "initial_tweet_id"
     t.integer  "user_id"
+    t.boolean  "completed"
   end
 
   create_table "prizes", force: true do |t|

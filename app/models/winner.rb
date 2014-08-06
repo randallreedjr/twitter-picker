@@ -1,8 +1,9 @@
 class Winner < ActiveRecord::Base
-  belongs_to :prize
+  has_one :prize
   belongs_to :tweet
+  #has_one :campaign, through: :prize
 
-  def choose_winner
+  def choose_winner(campaign_id)
     campaign = Campaign.find(campaign_id)
     tweets = campaign.tweets
     winner = rand(tweets.count)

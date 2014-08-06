@@ -1,15 +1,23 @@
 class WinnersController < ApplicationController
   def index
     @campaign = Campaign.find(params[:campaign_id])
-    if @campaign.winners.count == 0
-      @winner = Winner.create(:campaign_id => params[:campaign_id])
-      @winner.tweet_id = @winner.choose_winner.id
+    @prize = Prize.find_by(campaign_id: @campaign.id, winner_id: nil)
+    if @prize
+      binding.pry
+      @winner = Winner.new()
+      @winner.tweet_id = @winner.choose_winner(@campaign.id).id
       @winner.save
+      @prize.winner_id = @winner.id
+      @prize.save
+      @winners = [@winner]
     else
-      @winner = @campaign.winners[0]
+      @winners = Winner.joins("INNER JOIN prizes ON prizes.winner_id = winners.id").where("prizes.campaign_id = ?", @campaign.id)
     end
   end
 
   def show
+  end
+
+  def create
   end
 end
