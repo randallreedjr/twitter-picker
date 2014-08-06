@@ -18,3 +18,4 @@
 //= require contact_me
 //= require jqBootstrapValidation
 //= require agency
+//= require jquery.easing.min
