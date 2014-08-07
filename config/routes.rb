@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :analytics
 
   get 'tweets/index'
+  get '/campaigns/ongoing' => 'campaigns#ongoing'
+  get '/campaigns/completed' => 'campaigns#completed'
+  get '/campaigns/all' => 'campaigns#all'
 
   resources :campaigns do
     resources :prizes do
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/campaigns/:id/refresh' => 'campaigns#refresh', as: :refresh_tweets
 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

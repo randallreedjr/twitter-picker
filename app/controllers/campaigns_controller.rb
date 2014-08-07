@@ -6,6 +6,37 @@ class CampaignsController < ApplicationController
   def index
     if logged_in?
       @campaigns = Campaign.where(user_id: current_user.id)
+      @active = "all"
+    else
+      redirect_to root_url
+    end
+  end
+
+  def ongoing
+    if logged_in?
+      @campaigns = Campaign.where(user_id: current_user.id, completed: false)
+      @active = "ongoing"
+      render :index
+    else
+      redirect_to root_url
+    end
+  end
+
+  def all
+    if logged_in?
+      @campaigns = Campaign.where(user_id: current_user.id)
+      @active = "all"
+      render :index
+    else
+      redirect_to root_url
+    end
+  end
+
+  def completed
+    if logged_in?
+      @campaigns = Campaign.where(user_id: current_user.id, completed: true)
+      @active = "completed"
+      render :index
     else
       redirect_to root_url
     end
@@ -56,6 +87,7 @@ class CampaignsController < ApplicationController
     if logged_in?
       @campaign = Campaign.new(campaign_params)
       @campaign.user_id = current_user.id
+      @campaign.completed = false
       if !@campaign.hashtag.start_with?("#")
         @campaign.hashtag = "#" + @campaign.hashtag
       end

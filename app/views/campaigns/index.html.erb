@@ -1,17 +1,9 @@
-<%= render "layouts/appnav" %>
-<div class = "logged-in-container">
-  <div class="container">
-    <%= render "users/show" %>
-    <div class="campaign-container">
       <h1>Campaigns</h1>
       <% @campaigns.each do |campaign| %>
         <% @campaign = campaign %>
         <%= render "overview" %>
       <% end %>
       <div>
-        <%= link_to 'View analtyics', analytics_path %>
-        <%= link_to 'New Campaign', new_campaign_path %>
+        <%= link_to 'New Campaign', new_campaign_path, :class => "btn btn-info" %>
+        <%= link_to 'View analtyics', analytics_path, :class => "btn btn-warning" %>
       </div>
-    </div>
-  </div>
-</div>
