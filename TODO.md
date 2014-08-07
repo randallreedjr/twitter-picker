@@ -39,6 +39,7 @@ Analytics
 -Reach
 -Anything cool we can do with D3
 -Install gon gem?
+-Add link to navbar
 
 Stream tweets
 -Node.js?

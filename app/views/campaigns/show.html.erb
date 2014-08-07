@@ -25,18 +25,23 @@
 </p>
 <% end %>
 
-<ul>
+<ol>
 <% @campaign.prizes.each do |prize| %>
   <% if !prize.name.empty? %>
   <li><%= prize.name %> - <%= prize.description %></li>
   <% if @campaign.over? && !prize.winner %>
     <%= link_to 'Pick winner', campaign_prize_winners_path(@campaign, prize) %>
   <% elsif @campaign.over? && prize.winner %>
-    won by @<%= prize.winner.tweet.screen_name %>
+    won by:
+    <div class="winning-tweet">
+    <blockquote class="twitter-tweet" lang="en">
+    <p><%= prize.winner.tweet.text %></p>&mdash; <%= prize.winner.tweet.name %> (<%= prize.winner.tweet.screen_name %>) <a href="https://twitter.com/<%= prize.winner.tweet.screen_name%>/statuses/<%= prize.winner.tweet.status_id %>"><%= prize.winner.tweet.entry_time.strftime("%h %d, %Y") %></a></blockquote>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
   <% end %>
   <% end %>
 <% end %>
-</ul>
+</ol>
 
 <%= @campaign.tweets.count %> <%= "tweet".pluralize(@campaign.tweets.count) %> collected. 
 <% if !@campaign.over? %>

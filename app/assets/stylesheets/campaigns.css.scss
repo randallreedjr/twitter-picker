@@ -1,3 +1,16 @@
 // Place all the styles related to the Campaigns controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.campaign-container {
+  float: right;
+  width: 70%;
+  background-color: #f7f7f7;
+  margin: 10px 0;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.panel {
+  margin: 5px;
+}

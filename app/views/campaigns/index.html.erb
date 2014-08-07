@@ -1,40 +1,17 @@
 <%= render "layouts/appnav" %>
-<div class="container col-lg-12">
-<h1>Listing campaigns</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Hashtag</th>
-      <th>Start time</th>
-      <th>End time</th>
-      <th>Status</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @campaigns.each do |campaign| %>
-      <tr>
-        <td><%= link_to campaign.hashtag, campaign %></td>
-        <td><%= campaign.start_time.strftime('%h %d, %Y %l:%M%P') %></td>
-        <td><%= campaign.end_time.strftime('%h %d, %Y %l:%M%P') %></td>
-        <td>
-          <% if campaign.over? %>
-          Completed
-          <% else %>
-          Active
-          <% end %>
-        </td>
-        <td><%= link_to 'Edit', edit_campaign_path(campaign) %></td>
-        <td><%= link_to 'Destroy', campaign, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%= link_to 'View analtyics', analytics_path %>
-<%= link_to 'New Campaign', new_campaign_path %>
-
+<div class = "logged-in-container">
+  <div class="container">
+    <%= render "users/show" %>
+    <div class="campaign-container">
+      <h1>Campaigns</h1>
+      <% @campaigns.each do |campaign| %>
+        <% @campaign = campaign %>
+        <%= render "overview" %>
+      <% end %>
+      <div>
+        <%= link_to 'View analtyics', analytics_path %>
+        <%= link_to 'New Campaign', new_campaign_path %>
+      </div>
+    </div>
+  </div>
 </div>

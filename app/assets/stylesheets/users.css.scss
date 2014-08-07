@@ -1,0 +1,35 @@
+.user-container {
+  float: left;
+  margin-top: 20px;
+  background-color: #222;
+  height: 100%;
+  border-radius: 4px;
+  width: 28%;
+}
+
+.container {
+  min-height: 100%;
+}
+
+.user-image {
+  margin: 10px;
+  text-align: center;
+}
+
+.user-name {
+  font-size: 2em;
+  padding: 5px;
+  color: #fff;
+}
+
+.user-screen-name, .user-followers-count {
+  font-size: 1.25em;
+  padding: 5px;
+  color: #777;
+}
+
+.logged-in-container {
+  
+  min-height: 100%;
+  background-color: #FFC044;
+}

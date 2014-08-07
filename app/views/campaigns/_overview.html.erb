@@ -1,0 +1,27 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= link_to @campaign.hashtag, @campaign %></h3>
+  </div>
+  <div class="panel-body">
+    <div class="campaign-status">
+      Status: 
+      <% if @campaign.over? %>
+        Completed
+      <% else %>
+        Active
+      <% end %>
+    </div>
+    <div class="campaign-start">
+      Start: <%= @campaign.start_time.strftime('%h %d, %Y %l:%M%P') %>
+    </div>
+    <div class="campaign-end">
+      End: <%= @campaign.end_time.strftime('%h %d, %Y %l:%M%P') %>
+    </div>
+    <div class="campaign-edit">
+      <%= link_to 'Edit', edit_campaign_path(@campaign) %>
+    </div>
+    <div class="campaign-destroy">
+      <%= link_to 'Destroy', @campaign, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+</div>
