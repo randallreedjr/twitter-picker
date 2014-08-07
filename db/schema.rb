@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807181609) do
+ActiveRecord::Schema.define(version: 20140807215626) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "analytics", force: true do |t|
     t.datetime "created_at"
@@ -38,18 +41,12 @@ ActiveRecord::Schema.define(version: 20140807181609) do
     t.datetime "updated_at"
   end
 
-  create_table "searches", force: true do |t|
-    t.string   "hashtag"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tweets", force: true do |t|
     t.string   "text"
     t.string   "screen_name"
     t.datetime "entry_time"
     t.integer  "followers_count"
-    t.integer  "status_id"
+    t.integer  "status_id",       limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "campaign_id"
