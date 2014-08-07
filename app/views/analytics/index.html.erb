@@ -1,8 +1,10 @@
+
 <%= render "layouts/appnav" %>
 <div class="container">
   <h3>Tweets per campaign</h3>
-    <div class="chart"></div>
-    <script type="text/javascript">
-    barChart(<%= @data %>, <%= @max %>)
-    </script>
-    </div>
+
+
+<%= column_chart User.find(current_user.id).tweets.group(:campaign_id).count %>
+<h3>Tweets over time</h3>
+<%= line_chart User.find(current_user.id).tweets.group(:tweet_hour).count %>
+</div>

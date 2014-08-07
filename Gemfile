@@ -22,11 +22,20 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# Login with twitter
 gem 'omniauth-twitter'
 gem 'figaro'
 gem 'oauth'
+
+# Visualize model relationships
 gem 'railroady'
+
+# Easily incorporate font-awesome into styling
 gem 'font-awesome-rails'
+
+# Charts for analytics
+gem 'chartkick'
+gem 'groupdate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -51,6 +60,7 @@ group :test, :development do
   gem "simplecov"
   gem "database_cleaner"
   gem "sqlite3"
+  #gem "mysql2"
   gem "pry"
   gem "guard-rspec", require: false
   gem "thin"

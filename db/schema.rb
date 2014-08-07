@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807155936) do
+ActiveRecord::Schema.define(version: 20140807181609) do
 
   create_table "analytics", force: true do |t|
     t.datetime "created_at"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140807155936) do
     t.datetime "updated_at"
     t.integer  "campaign_id"
     t.string   "name"
+    t.string   "tweet_hour"
   end
 
   create_table "users", force: true do |t|

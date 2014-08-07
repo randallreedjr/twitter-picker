@@ -31,7 +31,7 @@
   <li><%= prize.name %> - <%= prize.description %></li>
   <% if @campaign.over? && !prize.winner %>
     <%= link_to 'Pick winner', campaign_prize_winners_path(@campaign, prize) %>
-  <% elsif @campaign.over? && prize.winner %>
+  <% elsif prize.winner %>
     won by:
     <div class="winning-tweet">
     <blockquote class="twitter-tweet" lang="en">

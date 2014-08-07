@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :campaigns
+  has_many :tweets, through: :campaigns
 
   def self.create_from_omniauth(auth_hash)
     self.create(provider: auth_hash[:provider],

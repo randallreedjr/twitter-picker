@@ -53,6 +53,8 @@ class Campaign < ActiveRecord::Base
         result.entry_time = tweet["created_at"]
         result.followers_count = tweet["user"]["followers_count"]
         result.status_id = tweet["id"]
+        result.name = tweet["user"]["name"]
+        result.tweet_hour = Time.parse(tweet["created_at"]).strftime('%m-%d-%Y %H')
         result.save
       end
     end

@@ -12,6 +12,12 @@ default: &default
 development:
   <<: *default
   database: db/development.sqlite3
+# development:
+#   adapter: mysql2
+#   database: db/development.frm
+#   username: pickerpool
+#   password:
+#   host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

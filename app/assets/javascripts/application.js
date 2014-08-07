@@ -19,3 +19,5 @@
 //= require agency
 //= require jquery.easing.min
 //= require analytics
+//= require jsapi
+//= require chartkick
