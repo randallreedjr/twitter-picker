@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :analytics
+
   get 'tweets/index'
 
   resources :campaigns do

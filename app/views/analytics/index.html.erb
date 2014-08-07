@@ -1,0 +1,8 @@
+<%= render "layouts/appnav" %>
+<div class="container">
+  <h3>Tweets per campaign</h3>
+    <div class="chart"></div>
+    <script type="text/javascript">
+    barChart(<%= @data %>, <%= @max %>)
+    </script>
+    </div>

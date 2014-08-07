@@ -18,3 +18,4 @@
 //= require jqBootstrapValidation
 //= require agency
 //= require jquery.easing.min
+//= require analytics
