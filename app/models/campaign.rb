@@ -31,9 +31,9 @@ class Campaign < ActiveRecord::Base
                                       end_time, 
                                       since_id,
                                       max_id)
-      if results["statuses"].count > 0
+      new_results = results["statuses"].count
+      if new_results > 0
         max_id = results["statuses"].last["id"] - 1
-        new_results  = results["statuses"].count
         tweets.concat results["statuses"]
       else
         break

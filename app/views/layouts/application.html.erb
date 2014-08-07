@@ -33,7 +33,16 @@
 
 <body id="page-top" class="index">
 
-<%= yield %>
+<% if inside? %>
+  <%= render "layouts/loggedin" %>
+  <%= yield %>
+  <%= render "layouts/loggedinfooter" %>
+<% else %>
+  <%= render "layouts/nav" %>
+  <%= yield %>
+<% end %>
+
+
 
 </body>
 </html>

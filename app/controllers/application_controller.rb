@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
       session[:user_id] = nil
     end
   end
+
+  helper_method def inside?
+    case request.env["REQUEST_PATH"]
+    when "/","/#page-top","/#services", "/#about", "/logout"
+      false
+    else
+      true
+    end
+  end
 end
