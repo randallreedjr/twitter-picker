@@ -3,6 +3,8 @@
  * Code licensed under the Apache License v2.0.
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
+
+
 .button-coloring {
     color:rgb(0,0,255);
 }
@@ -23,6 +25,7 @@ body {
 p {
     font-size: 14px;
     line-height: 1.75;
+    font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 p.large {
@@ -126,9 +129,9 @@ fieldset[disabled] .btn-primary.active {
     border-radius: 3px;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 18px;
+    font-size: 50px;
     font-weight: 700;
-    color: black;
+    color: grey;
     background-color: #FDFF2A;
 }
 
@@ -319,7 +322,7 @@ header .intro-text .intro-heading {
     header .intro-text .intro-heading {
         margin-bottom: 50px;
         text-transform: uppercase;
-        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-family: 'Mystery Quest',"Helvetica Neue",Helvetica,Arial,sans-serif;
         font-size: 75px;
         font-weight: 700;
         line-height: 75px;
@@ -334,6 +337,7 @@ section h2.section-heading {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 40px;
+    color: #1B82EC
 }
 
 section h3.section-subheading {
@@ -447,7 +451,7 @@ section h3.section-subheading {
     left: 40px;
     width: 2px;
     margin-left: -1.5px;
-    background-color: #f1f1f1;
+    background-color: #1B82EC;
 }
 
 .timeline>li {
@@ -495,7 +499,7 @@ section h3.section-subheading {
     width: 80px;
     height: 80px;
     margin-left: 0;
-    border: 7px solid #f1f1f1;
+    border: 7px double #1B82EC;
     border-radius: 100%;
     text-align: center;
     color: #fff;
@@ -544,6 +548,11 @@ section h3.section-subheading {
 .timeline .timeline-body>p,
 .timeline .timeline-body>ul {
     margin-bottom: 0;
+}
+
+ul {
+  font-size: 13px;
+  line-height: 18px;
 }
 
 @media(min-width:768px) {
@@ -658,14 +667,13 @@ aside.clients img {
 }
 
 section#contact {
-    background-color: #222;
-    background-image: url(../images/map-image.png);
+    background-color: #FCD400;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 section#contact .section-heading {
-    color: #fff;
+    color: #1B82EC;
 }
 
 section#contact .form-group {
@@ -686,7 +694,7 @@ section#contact .form-group textarea.form-control {
 }
 
 section#contact .form-control:focus {
-    border-color: #fed136;
+    border-color: #1B82EC;
     box-shadow: none;
 }
 
@@ -754,8 +762,8 @@ ul.social-buttons li a {
     font-size: 20px;
     line-height: 40px;
     outline: 0;
-    color: #fff;
-    background-color: #222;
+    color: #139AE9;
+    background-color: #FCD400;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     transition: all .3s;
@@ -764,7 +772,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-    background-color: #fed136;
+    background-color: #E0FFFF;
 }
 
 .btn:focus,
