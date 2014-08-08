@@ -1,5 +1,5 @@
 <div class="navbar navbar-inverse">
-        <div class="container">
+        
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
               <span class="sr-only">Toggle navigation</span>
@@ -7,10 +7,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/campaigns/ongoing">Campaigns</a>
+            
           </div>
           <div class="navbar-collapse collapse">
+
             <ul class="nav navbar-nav">
+              <li><a class="navbar-brand" href="/campaigns/ongoing">Campaigns</a></li>
               <li<%= ' class=active' if @active == "ongoing" %>><a href="/campaigns/ongoing">Ongoing</a></li>
               <li<%= ' class=active' if @active == "completed" %>><a href="/campaigns/completed">Completed</a></li>
               <li<%= ' class=active' if @active == "all" %>><a href="/campaigns/all">All</a></li>
@@ -29,5 +31,5 @@
               </li>
             </ul>
           </div><!--/.nav-collapse -->
-        </div>
+        
       </div>

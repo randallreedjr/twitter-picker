@@ -3,4 +3,5 @@
       <li><%= @tweet.name %> (@<%= @tweet.screen_name %>)</li>
       <li>Tweeted at: <%= @tweet.entry_time %></li>
       <li>Number of followers: <%= @tweet.followers_count %></li>
+      <li><%= @tweet.valid_entry ? 'Status: Valid' : 'Status: Rejected' %></li>
     </ul>

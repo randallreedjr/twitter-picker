@@ -35,15 +35,15 @@ class WinnersController < ApplicationController
         if a_prize.winner
           next
         else
-        @winner = Winner.new()
-        @winner.tweet_id = @winner.choose_winner(@campaign.id).id
-        @winner.save
-        a_prize.winner_id = @winner.id
-        a_prize.save
-        @winners << @winner
+          @winner = Winner.new()
+          @winner.tweet_id = @winner.choose_winner(@campaign.id).id
+          @winner.save
+          a_prize.winner_id = @winner.id
+          a_prize.save
+          @winners << @winner
         end
-        redirect_to campaign_path(@campaign)
       end
+      redirect_to campaign_path(@campaign)
     end
   end
 #errors: redirection issue after picking winners, not all winners are picked, need to refactor prize to avoid useless redirection
