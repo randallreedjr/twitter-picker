@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/auth/twitter/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/campaigns/:id/refresh' => 'campaigns#refresh', as: :refresh_tweets
-
+  get '/campaigns/:id/all_winners' => 'winners#show_all_winners', as: :campaign_show_all_winners
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

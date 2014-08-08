@@ -23,8 +23,12 @@
   <h3>Campaign ongoing</h3>
 </p>
 <% end %>
-
 <ol>
+
+
+    <%= link_to 'Pick all winners', campaign_show_all_winners_path(@campaign) %>
+
+
 <% @campaign.prizes.each do |prize| %>
   <% if !prize.name.empty? %>
   <li><%= prize.name %> - <%= prize.description %></li>
