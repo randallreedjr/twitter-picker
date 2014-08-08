@@ -26,7 +26,7 @@ development:
 # test:
 #   <<: *default
 #   database: db/test.sqlite3
-development:
+test:
   adapter: postgresql
   database: db/test
   username: pickerpool

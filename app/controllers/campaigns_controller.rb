@@ -56,6 +56,20 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def tweet
+    if logged_in?
+      @campaign = Campaign.find(params[:id])
+      if @campaign.user_id != current_user.id
+        session[:user_id] = nil
+      end
+      @campaign.send_tweet
+      flash[:notice] = "Tweet sent"
+      redirect_to campaign_path(@campaign)
+    else
+      redirect_to root_url 
+    end
+  end
+
   def refresh
     if logged_in?
       set_campaign

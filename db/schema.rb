@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807215626) do
+ActiveRecord::Schema.define(version: 20140808192556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 20140807215626) do
     t.string   "name"
     t.string   "image_url"
     t.integer  "followers_count"
+    t.text     "token"
+    t.text     "secret"
   end
 
   create_table "winners", force: true do |t|
