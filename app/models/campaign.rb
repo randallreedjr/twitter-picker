@@ -14,15 +14,21 @@ class Campaign < ActiveRecord::Base
     self.completed
   end
 
-  def send_tweet
-    binding.pry
+  def start_time
+    super.in_time_zone('Eastern Time (US & Canada)') if super
+  end
+
+  def end_time
+    super.in_time_zone('Eastern Time (US & Canada)') if super
+  end
+
+  def send_tweet(tweet_text)
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_API_KEY']
       config.consumer_secret     = ENV['TWITTER_API_SECRET']
       config.access_token        = self.user.token
       config.access_token_secret = self.user.secret
     end
-    tweet_text = "New raffle - tweet #{self.hashtag} to enter, or RT this message! Ends #{self.end_time.strftime('%b %-d, %Y %l:%M%P')}!"
     client.update(tweet_text)
   end
 

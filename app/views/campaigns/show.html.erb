@@ -7,12 +7,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @campaign.start_time %>
+  <%= @campaign.start_time.strftime('%h %d, %Y %l:%M%P') %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @campaign.end_time %>
+  <%= @campaign.end_time.strftime('%h %d, %Y %l:%M%P') %>
 </p>
 <% if @campaign.over? %>
 <p>
