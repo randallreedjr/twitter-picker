@@ -7,12 +7,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @campaign.start_time %>
+  <%= @campaign.start_time.strftime('%h %d, %Y %l:%M%P') %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @campaign.end_time %>
+  <%= @campaign.end_time.strftime('%h %d, %Y %l:%M%P') %>
 </p>
 <% if @campaign.over? %>
 <p>
@@ -55,5 +55,6 @@
   <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
 <% end %>
 <br>
+<%= link_to 'Send Tweet', tweet_campaign_path(@campaign) %> |
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
 <%= link_to 'Back', campaigns_path %>

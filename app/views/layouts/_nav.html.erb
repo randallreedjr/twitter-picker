@@ -34,7 +34,7 @@
                         <li> <%= link_to current_user.screen_name, campaigns_path %></li>
                         <li><%= link_to 'Log out', logout_path, :class => "page-scroll" %></li>
                       <% else %>
-                        <li><%= link_to 'Log in with Twitter', login_path, :class => "page-scroll" %></li>
+                        <li><a href="/login"><img src="https://dev.twitter.com/sites/default/files/images_documentation/sign-in-with-twitter-link.png" alt="Sign in with Twitter"></a></li>
                       <% end %>
                     </li>
 

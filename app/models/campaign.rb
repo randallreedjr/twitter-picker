@@ -14,6 +14,24 @@ class Campaign < ActiveRecord::Base
     self.completed
   end
 
+  def start_time
+    super.in_time_zone('Eastern Time (US & Canada)') if super
+  end
+
+  def end_time
+    super.in_time_zone('Eastern Time (US & Canada)') if super
+  end
+
+  def send_tweet(tweet_text)
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_API_KEY']
+      config.consumer_secret     = ENV['TWITTER_API_SECRET']
+      config.access_token        = self.user.token
+      config.access_token_secret = self.user.secret
+    end
+    client.update(tweet_text)
+  end
+
   def find_tweets
     twitter = TwitterAPI.new
     start_time = self.start_time.strftime('%Y-%m-%d')

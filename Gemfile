@@ -27,6 +27,9 @@ gem 'omniauth-twitter'
 gem 'figaro'
 gem 'oauth'
 
+# Tweet with twitter gem
+gem 'twitter'
+
 # Visualize model relationships
 gem 'railroady'
 

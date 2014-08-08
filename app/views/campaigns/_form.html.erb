@@ -19,11 +19,11 @@
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time, :disabled => @campaign.over? %>
+    <%= f.datetime_select(:start_time, ampm: true, :default => {:hour => 12, :minute => 00}, :disabled => @campaign.over?) %>
   </div>
   <div class="field">
     <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time, :disabled => @campaign.over? %>
+    <%= f.datetime_select :end_time, ampm: true, :default => {:hour => 18, :minute => 00}, :disabled => @campaign.over? %>
   </div>
   <% if @campaign.id %>
   <div class="field">
@@ -31,6 +31,16 @@
     <%= f.label :completed %>
   </div>
   <% end %>
+  
+  <div class="field">
+    <%= f.label :max_entries %>
+    <%= f.number_field :max_entries, :value => 1 %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :tweet_at_creation, :checked => true %>
+    <%= f.label :tweet_at_creation %>
+  </div>
 
   <h2>Prizes</h2>
   <ul>

@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
                 name: auth_hash[:info][:name],
                 screen_name: auth_hash[:info][:nickname],
                 image_url: auth_hash[:info][:image].sub("_normal","_bigger"),
-                followers_count: auth_hash[:extra][:raw_info][:followers_count])
+                followers_count: auth_hash[:extra][:raw_info][:followers_count],
+                token: auth_hash[:credentials][:token],
+                secret: auth_hash[:credentials][:secret])
   end
 end
