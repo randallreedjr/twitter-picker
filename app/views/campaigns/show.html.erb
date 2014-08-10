@@ -7,12 +7,12 @@
 
 <p>
   <strong>Start time:</strong>
-  <%= @campaign.start_time.strftime('%h %d, %Y %l:%M%P') %>
+  <%= @campaign.readable_start_time %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @campaign.end_time.strftime('%h %d, %Y %l:%M%P') %>
+  <%= @campaign.readable_end_time %>
 </p>
 <% if @campaign.over? %>
 <p>
@@ -23,16 +23,16 @@
   <h3>Campaign ongoing</h3>
 </p>
 <% end %>
+<p>
+<%= link_to 'Pick winners for all prizes', campaign_show_all_winners_path(@campaign) %>
 <ol>
-
-
-    <%= link_to 'Pick all winners', campaign_show_all_winners_path(@campaign) %>
-
-
 <% @campaign.prizes.each do |prize| %>
   <% if !prize.name.empty? %>
   <li><%= prize.name %> - <%= prize.description %></li>
   <% if @campaign.over? && !prize.winner %>
+    <%= form_for [@campaign, prize, Winner.new] do |f| %>
+    <%= f.submit 'Pick winner', :class => "btn btn-warning" %>
+    <% end %>
     <%= link_to 'Pick winner', campaign_prize_winners_path(@campaign, prize) %>
   <% elsif prize.winner %>
     won by:
@@ -41,23 +41,28 @@
     <p><%= prize.winner.tweet.text %></p>&mdash; <%= prize.winner.tweet.name %> (<%= prize.winner.tweet.screen_name %>) <a href="https://twitter.com/<%= prize.winner.tweet.screen_name%>/statuses/<%= prize.winner.tweet.status_id %>"><%= prize.winner.tweet.entry_time.strftime("%h %d, %Y") %></a></blockquote>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
+    <%= form_for [@campaign, prize, prize.winner], method: :delete do |f| %>
+    <%= f.submit 'Repick', :class => "btn btn-danger" %>
+    <% end %>
   <% end %>
   <% end %>
 <% end %>
 </ol>
-
-<%= @campaign.tweets.count %> <%= "tweet".pluralize(@campaign.tweets.count) %> collected. 
-<% if !@campaign.over? %>
-| <%= link_to 'Load more tweets', refresh_tweets_path(@campaign) %>
-<% end %>
-<br>
-<% if @campaign.tweets.any? %>
-  <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
-<% end %>
-<br>
+</p>
+<p>
+  <%= @campaign.tweets.count %> <%= "tweet".pluralize(@campaign.tweets.count) %> collected. 
+  <% if !@campaign.over? %>
+  | <%= link_to 'Load more tweets', refresh_tweets_path(@campaign) %>
+  <% end %>
+  <br>
+  <% if @campaign.tweets.any? %>
+    <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
+  <% end %>
+</p>
 <%= form_for [@campaign, Announcement.new] do |f| %>
 <%= f.submit 'Send Tweet', :class => "btn btn-info" %>
 <% end %>
-<%= link_to 'Send Tweet', campaign_announcements_path(@campaign) %> |
+<p>
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
 <%= link_to 'Back', campaigns_path %>
+</p>

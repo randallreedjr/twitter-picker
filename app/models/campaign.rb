@@ -24,6 +24,14 @@ class Campaign < ActiveRecord::Base
     super.in_time_zone('Eastern Time (US & Canada)') if super
   end
 
+  def readable_start_time
+    start_time.strftime('%b %-d, %Y %l:%M%P')
+  end
+
+  def readable_end_time
+    end_time.strftime('%b %-d, %Y %l:%M%P')
+  end
+
   def find_tweets
     twitter = TwitterAPI.new
     start_time = self.start_time.strftime('%Y-%m-%d')
@@ -71,7 +79,7 @@ class Campaign < ActiveRecord::Base
       end
     end
   end
-
+  private
   def delete_dependencies
     self.winners.destroy_all
     self.prizes.destroy_all

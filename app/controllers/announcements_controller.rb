@@ -9,7 +9,7 @@ class AnnouncementsController < ApplicationController
         if @campaign.start_time < Time.now
           announcement = Announcement.new
           announcement.campaign_id = @campaign.id
-          announcement.text = "New raffle - tweet #{@campaign.hashtag} to enter, or RT this message! Ends #{@campaign.end_time.strftime('%b %-d, %Y %l:%M%P')}!"
+          announcement.text = "New raffle - tweet #{@campaign.hashtag} to enter, or RT this message! Ends #{@campaign.readable_end_time}!"
           announcement.send_tweet
           flash[:notice] = "Tweet sent"
         else

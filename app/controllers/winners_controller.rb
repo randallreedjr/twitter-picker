@@ -1,29 +1,33 @@
 class WinnersController < ApplicationController
-  def index
+  def create
     if logged_in?
       @campaign = Campaign.find(params[:campaign_id])
       @prize = Prize.find_by(campaign_id: @campaign.id, id: params[:prize_id])
       if @prize
-        @winner = Winner.new()
-        @winner.tweet_id = @winner.choose_winner(@campaign.id).id
-        @winner.save
-        @prize.winner_id = @winner.id
-        @prize.save
-        @winners = [@winner]
+        @winners = [@prize.choose_winner]
       else
         @winners = Winner.joins("INNER JOIN prizes ON prizes.winner_id = winners.id").where("prizes.campaign_id = ?", @campaign.id)
       end
+      redirect_to campaign_path(@campaign)
     else
       redirect_to root_url
     end
   end
 
-  def show
-    redirect_to root_url if !logged_in?
-  end
-
-  def create
-    redirect_to root_url if !logged_in?
+  def destroy
+    if logged_in?
+      @campaign = Campaign.find(params[:campaign_id])
+      if @campaign.user_id == current_user.id
+        @winner = Winner.find(params[:id])
+        @winner.clear_prize
+        redirect_to campaign_path(@campaign)
+      else
+        reset_session
+        redirect_to root_url
+      end
+    else
+      redirect_to root_url
+    end
   end
 
   def show_all_winners
