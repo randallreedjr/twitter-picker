@@ -19,9 +19,11 @@ Rails.application.routes.draw do
       resources :winners, :only => [:create, :destroy]
     end
     resources :tweets, :only => :index
+    resources :announcements, :only => :create
   end
   resources :analytics, :only => :index
   #resources :users  
+
 
   
   get '/campaigns/:id/refresh' => 'campaigns#refresh', as: :refresh_tweets

@@ -6,6 +6,7 @@ class Campaign < ActiveRecord::Base
   has_many :tweets
   has_many :prizes
   has_many :winners, through: :prizes
+  has_many :announcements
   validates_presence_of :hashtag, :start_time, :end_time
   validates_uniqueness_of :hashtag
   accepts_nested_attributes_for :prizes
@@ -21,16 +22,6 @@ class Campaign < ActiveRecord::Base
 
   def end_time
     super.in_time_zone('Eastern Time (US & Canada)') if super
-  end
-
-  def send_tweet(tweet_text)
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_API_KEY']
-      config.consumer_secret     = ENV['TWITTER_API_SECRET']
-      config.access_token        = self.user.token
-      config.access_token_secret = self.user.secret
-    end
-    client.update(tweet_text)
   end
 
   def find_tweets

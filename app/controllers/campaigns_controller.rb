@@ -60,29 +60,6 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def tweet
-    if logged_in?
-      @campaign = Campaign.find(params[:id])
-      if @campaign.user_id != current_user.id
-        session[:user_id] = nil
-        redirect_to root_url 
-      else
-        if @campaign.start_time < Time.now
-          tweet_text = "New raffle - tweet #{@campaign.hashtag} to enter, or RT this message! Ends #{@campaign.end_time.strftime('%b %-d, %Y %l:%M%P')}!"
-          @campaign.send_tweet(tweet_text)
-          flash[:notice] = "Tweet sent"
-        else
-          flash[:notice] = "Tweet cannot be sent until campaign begins"
-        end 
-        redirect_to campaign_path(@campaign)
-      end
-      
-      
-    else
-      redirect_to root_url 
-    end
-  end
-
   def refresh
     if logged_in?
       set_campaign

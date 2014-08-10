@@ -55,6 +55,9 @@
   <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
 <% end %>
 <br>
-<%= link_to 'Send Tweet', tweet_campaign_path(@campaign) %> |
+<%= form_for [@campaign, Announcement.new] do |f| %>
+<%= f.submit 'Send Tweet', :class => "btn btn-info" %>
+<% end %>
+<%= link_to 'Send Tweet', campaign_announcements_path(@campaign) %> |
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
 <%= link_to 'Back', campaigns_path %>
