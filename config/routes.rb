@@ -1,26 +1,29 @@
 Rails.application.routes.draw do
   
-  resources :analytics
-
-  get 'tweets/index'
-  get '/campaigns/ongoing' => 'campaigns#ongoing'
-  get '/campaigns/completed' => 'campaigns#completed'
-  get '/campaigns/all' => 'campaigns#all'
-  get '/campaigns/:id/tweet' => 'campaigns#tweet', as: :tweet_campaign
-
-  resources :campaigns do
-    resources :prizes do
-      resources :winners
-    end
-    resources :tweets
-  end
-
-  resources :users  
-
+  # Static pages
   root 'pages#home'
+
+  # Omniauth
   get '/login' => 'sessions#new'
   get '/auth/twitter/callback' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
+
+  # Sort campaigns by status
+  get '/campaigns/ongoing' => 'campaigns#ongoing'
+  get '/campaigns/completed' => 'campaigns#completed'
+  get '/campaigns/all' => 'campaigns#all'
+  #get '/campaigns/:id/tweet' => 'campaigns#tweet', as: :tweet_campaign
+
+  resources :campaigns do
+    resources :prizes, :only => [:create, :new, :edit, :update, :destroy] do
+      resources :winners, :only => [:create, :destroy]
+    end
+    resources :tweets, :only => :index
+  end
+  resources :analytics, :only => :index
+  #resources :users  
+
+  
   get '/campaigns/:id/refresh' => 'campaigns#refresh', as: :refresh_tweets
   get '/campaigns/:id/all_winners' => 'winners#show_all_winners', as: :campaign_show_all_winners
   
