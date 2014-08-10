@@ -1,9 +1,9 @@
-      <h1>Campaigns</h1>
-      <% @campaigns.each do |campaign| %>
-        <% @campaign = campaign %>
-        <%= render "overview" %>
-      <% end %>
-      <div>
-        <%= link_to 'New Campaign', new_campaign_path, :class => "btn btn-info" %>
-        <%= link_to 'View analtyics', analytics_path, :class => "btn btn-warning" %>
-      </div>
+<h1><%= @title %></h1>
+<% @campaigns.each do |campaign| %>
+  <% @campaign = campaign %>
+  <%= render "overview" %>
+<% end %>
+<div>
+  <%= link_to 'New Campaign', new_campaign_path, :class => "btn btn-info" %>
+  <%= link_to 'View analtyics', analytics_path, :class => "btn btn-warning" %>
+</div>

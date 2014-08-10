@@ -5,6 +5,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     if logged_in?
+      @title = "All Campaigns"
       @campaigns = Campaign.where(user_id: current_user.id)
       @active = "all"
     else
@@ -14,6 +15,7 @@ class CampaignsController < ApplicationController
 
   def ongoing
     if logged_in?
+      @title = "Ongoing Campaigns"
       @campaigns = Campaign.where(user_id: current_user.id, completed: false)
       @active = "ongoing"
       render :index
@@ -24,6 +26,7 @@ class CampaignsController < ApplicationController
 
   def all
     if logged_in?
+      @title = "All Campaigns"
       @campaigns = Campaign.where(user_id: current_user.id)
       @active = "all"
       render :index
@@ -34,6 +37,7 @@ class CampaignsController < ApplicationController
 
   def completed
     if logged_in?
+      @title = "Completed Campaigns"
       @campaigns = Campaign.where(user_id: current_user.id, completed: true)
       @active = "completed"
       render :index
