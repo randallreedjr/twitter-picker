@@ -124,12 +124,12 @@ fieldset[disabled] .btn-primary.active {
 }
 
 .btn-xl {
-    padding: 20px 40px;
+    /*padding: 20px 40px;
+    border-radius: 3px;*/
     border-color: #fed136;
-    border-radius: 3px;
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 50px;
+    font-size: 30px;
     font-weight: 700;
     color: grey;
     background-color: #FDFF2A;
@@ -177,7 +177,7 @@ fieldset[disabled] .btn-xl.active {
 }
 
 .navbar-default {
-    border-color: transparent;
+    /*border-color: transparent;*/
     background-color: #222;
 }
 
@@ -241,7 +241,7 @@ fieldset[disabled] .btn-xl.active {
     .navbar-default {
         padding: 25px 0;
         border: 0;
-        background-color: transparent;
+        /*background-color: transparent;*/
         -webkit-transition: padding .3s;
         -moz-transition: padding .3s;
         transition: padding .3s;
