@@ -33,3 +33,15 @@
   min-height: 100%;
   background-color: #FFC044;
 }
+
+@media (min-width: 768px) {
+  .logged-in-container {
+    padding-top: 100px;
+  }
+}
+
+@media (max-width: 767px) {
+  .logged-in-container {
+    padding-top: 50px;
+  }
+}

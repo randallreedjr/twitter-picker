@@ -21,7 +21,6 @@
  //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
 */
 body {
-  background-color: #ffc044;
   /*padding-bottom: 30px;*/
   height: 100%;
 }
@@ -30,14 +29,3 @@ html {
   height: 100%;
 }
 
-@media (min-width: 768px) {
-  body {
-    padding-top: 100px;
-  }
-}
-
-@media (max-width: 767px) {
-  body {
-    padding-top: 50px;
-  }
-}
