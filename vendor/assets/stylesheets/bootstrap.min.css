@@ -3811,6 +3811,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     overflow-y: visible;
   }
   .navbar-fixed-top .navbar-collapse,
+  .navbar-top .navbar-collapse,
   .navbar-static-top .navbar-collapse,
   .navbar-fixed-bottom .navbar-collapse {
     padding-right: 0;
@@ -3818,11 +3819,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-fixed-top .navbar-collapse,
+.navbar-top .navbar-collapse,
 .navbar-fixed-bottom .navbar-collapse {
   max-height: 340px;
 }
 @media (max-width: 480px) and (orientation: landscape) {
   .navbar-fixed-top .navbar-collapse,
+  .navbar-top .navbar-collapse,
   .navbar-fixed-bottom .navbar-collapse {
     max-height: 200px;
   }
@@ -3862,13 +3865,24 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
        -o-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 }
+.navbar-top {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  -webkit-transform: translate3d(0, 0, 0);
+       -o-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
 @media (min-width: 768px) {
   .navbar-fixed-top,
+  .navbar-top,
   .navbar-fixed-bottom {
     border-radius: 0;
   }
 }
-.navbar-fixed-top {
+.navbar-fixed-top,
+.navbar-top {
   top: 0;
   border-width: 0 0 1px;
 }
