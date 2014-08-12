@@ -270,18 +270,18 @@ DEPENDENCIES
   factory_girl_rails
   figaro
   font-awesome-rails
-  google-analytics-rails
+  google-analytics-rails (= 0.0.6)
   groupdate
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
   oauth
   omniauth-twitter
-  pg
+  pg (= 0.17.1)
   pry
   railroady
   rails (= 4.1.4)
-  rails_12factor
+  rails_12factor (= 0.0.2)
   rspec-rails
   sass-rails (= 4.0.2)
   sdoc (~> 0.4.0)

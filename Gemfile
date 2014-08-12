@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.1.2"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -63,16 +63,15 @@ group :test, :development do
   gem "simplecov"
   gem "database_cleaner"
   gem "sqlite3"
-  #gem "mysql2"
   gem "pry"
   gem "guard-rspec", require: false
   gem "thin"
 end
 
 group :production do
-  gem "pg"
-  gem "google-analytics-rails"
-  gem "rails_12factor"
+  gem "pg", "0.17.1"
+  gem "google-analytics-rails", "0.0.6"
+  gem "rails_12factor", "0.0.2"
 end
 
 gem "bootstrap-sass", "~> 3.1.1"
