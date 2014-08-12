@@ -3,14 +3,13 @@
   require 'json'
 class Campaign < ActiveRecord::Base
   belongs_to :user
-  has_many :tweets
-  has_many :prizes
+  has_many :tweets, :dependent => :destroy
+  has_many :prizes, :dependent => :destroy
   has_many :winners, through: :prizes
   has_many :announcements
   validates_presence_of :hashtag, :start_time, :end_time
   validates_uniqueness_of :hashtag
   accepts_nested_attributes_for :prizes
-  before_destroy :delete_dependencies
 
   def over?
     self.completed
@@ -87,12 +86,6 @@ class Campaign < ActiveRecord::Base
         result.save
       end
     end
-  end
-  private
-  def delete_dependencies
-    self.winners.destroy_all
-    self.prizes.destroy_all
-    self.tweets.destroy_all
   end
 end
 
