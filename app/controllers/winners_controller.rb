@@ -12,7 +12,24 @@ class WinnersController < ApplicationController
       #redirect_to campaign_path(@campaign)
       #respond_to do |format|
       
-      render :json => [@winner], :include => :winner
+      winner_json = {
+        :text => @winner.text,
+        :campaign_id => @winner.campaign_id,
+        :winner_id => @winner.winner.id,
+        :name => @winner.name,
+        :screen_name => @winner.screen_name,
+        :status_id_str => @winner.status_id_str,
+        :entry_time => @winner.readable_entry_time,
+        :prize_id => @winner.winner.prize_id,
+        :prize_name => @winner.winner.prize.name,
+        :prize_description => @winner.winner.prize.description
+      }
+      
+      render :json => [winner_json]
+      #render :json => [@winner], :include => :winner
+      #render :json => @winner.to_json, :include => [:winner,:prize]
+
+      
       #end
       #render :json => @winner
     else
