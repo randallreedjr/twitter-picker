@@ -74,6 +74,7 @@
 <%= form_for [@campaign, Announcement.new] do |f| %>
 <%= f.submit 'Send Announcement Tweet', :class => "btn btn-info" %>
 <% end %>
+<%= link_to 'View analtyics', campaign_analytics_path(@campaign), :class => "btn btn-warning" %>
 <p>
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
 <%= link_to 'Back', campaigns_path %>
