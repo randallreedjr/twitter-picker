@@ -1,6 +1,6 @@
 class Prize < ActiveRecord::Base
   belongs_to :campaign
-  belongs_to :winner
+  has_one :winner
 
   def choose_winner
     tweets = Tweet.joins(:campaign).where(:valid_entry => true,:campaigns => {:id => self.campaign.id})
@@ -15,9 +15,8 @@ class Prize < ActiveRecord::Base
 
     winner = Winner.new()
     winner.tweet_id = winning_tweet.id
+    winner.prize_id = self.id
     winner.save
-    self.winner_id = winner.id
-    self.save
     return winning_tweet
   end
 end

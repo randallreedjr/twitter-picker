@@ -1,4 +1,4 @@
-class PrizeController < ApplicationController
+class PrizesController < ApplicationController
   def destroy
     if logged_in?
       @prize.destroy

@@ -54,6 +54,8 @@ class CampaignsController < ApplicationController
       if @campaign.user_id != current_user.id
         session[:user_id] = nil
         redirect_to root_url
+      else
+        @prizes = @campaign.prizes.sort_by {|p| p.id}
       end
     else
       redirect_to root_url 

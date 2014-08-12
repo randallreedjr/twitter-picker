@@ -1,0 +1,47 @@
+$( document ).ready(function(){
+  $('.pick-winner').click(function(e){
+    e.preventDefault();
+    var $form = $(this).closest('form');
+    $form.closest('div').hide();
+    var $that = $(this);
+    $.ajax({
+      url: $form.attr('action'),
+      type: 'POST',
+      data: $form.serialize(),
+      dataType: 'script',
+      success: function(d){
+        var tweet = JSON.parse(d);
+        var $repick = $form.parent().parent().find('form').last()[0];
+        $repick.action = '/campaigns/' + tweet[0].campaign_id + '/prizes/' + tweet[0].winner.prize_id + '/winners/' + tweet[0].winner.id
+        $repick.className = "repick-winner"
+        $repick.removeAttribute('style');
+        $form.parent().parent().prepend('<div class="winning-tweet"><blockquote class="twitter-tweet" lang="en"><p>'+tweet[0].text+'</p>&mdash; '+tweet[0].name+' (' + tweet[0].screen_name +') <a href="https://twitter.com/'+tweet[0].screen_name+'/statuses/'+tweet[0].status_id_str+'">'+tweet[0].entry_time+'</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>');
+        
+        $form.parent().hide();
+      },
+      failure: function(){alert('Could not pick winner');}
+    });
+  });
+});
+
+$( document ).ready(function(){
+  $('form').on('click','.repick-winner',function(e){
+    e.preventDefault();
+    var $form = $(this).closest('form');
+    $.ajax({
+      url: $form.attr('action'),
+      type: 'POST',
+      data: $form.serialize(),
+      dataType: 'script',
+      success: function(d){
+        $form.hide();
+        var pick = $form.parent().find('.no-winner');
+        pick[0].style.display = "block";
+        $form.parent().find('.winning-tweet').remove();
+      },
+      failure: function(){
+        alert('Winner could not be repicked. Please try again later');
+      }
+    });
+  });
+});

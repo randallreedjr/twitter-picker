@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808223931) do
+ActiveRecord::Schema.define(version: 20140812004522) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20140808223931) do
 
   create_table "prizes", force: true do |t|
     t.integer  "campaign_id"
-    t.integer  "winner_id"
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"
@@ -63,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140808223931) do
     t.string   "tweet_hour"
     t.boolean  "valid_entry"
     t.integer  "uid",             limit: 8
+    t.string   "status_id_str"
   end
 
   create_table "users", force: true do |t|
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20140808223931) do
     t.integer  "tweet_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "prize_id"
   end
 
 end

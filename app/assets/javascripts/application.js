@@ -21,3 +21,5 @@
 //= require analytics
 //= require jsapi
 //= require chartkick
+//= require prizes
+//= require campaigns

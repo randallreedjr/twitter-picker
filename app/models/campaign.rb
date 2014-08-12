@@ -72,6 +72,7 @@ class Campaign < ActiveRecord::Base
         result.entry_time = tweet["created_at"]
         result.followers_count = tweet["user"]["followers_count"]
         result.status_id = tweet["id"]
+        result.status_id_str = "#{tweet["id"]}"
         result.name = tweet["user"]["name"]
         result.tweet_hour = Time.parse(tweet["created_at"]).strftime('%m-%d-%Y %H')
         result.valid_entry = (Tweet.where(campaign_id: self.id, uid: tweet["user"]["id"]).count < self.max_entries) && (tweet["user"]["id_str"] != self.user.uid)
