@@ -43,9 +43,6 @@ class TwitterAPI
                                     "count" => 100)
     end
     
-    #query = URI.encode_www_form("q" => hashtag, "count" => 100, "page" => page)
-
-    
     address = URI("#{@baseurl}#{@path}?#{query}")
 
     request = Net::HTTP::Get.new address.request_uri
