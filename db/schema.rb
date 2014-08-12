@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20140812195403) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number"
   end
 
   create_table "tweeters", force: true do |t|
