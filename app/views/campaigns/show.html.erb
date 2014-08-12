@@ -28,7 +28,7 @@
 <ol>
 <% @prizes.each do |prize| %>
   <% if !prize.name.empty? %>
-    <li><%= prize.name %> - <%= prize.description %></li>
+    <li><%= prize.name %></li>
       <div class="result">
         <div class="no-winner <%= "hide-form" if prize.winner%>">
         <%= form_for [@campaign, prize, Winner.new], :html => {:class => "pick-form"} do |f| %>
@@ -49,7 +49,7 @@
         <%= f.submit "Repick", :class => "btn btn-danger repick-winner" %>
       <% end %>
       <% if prize.winner %>
-        <% tweet_text = "Congratulations! You won #{prize.description.blank? ? prize.name : prize.description} in the #{@campaign.hashtag} giveaway!" %>
+        <% tweet_text = "Congratulations! You won #{prize.name} in the #{@campaign.hashtag} giveaway!" %>
 
         <div class="tweet-to-winner btn">
           <a href="https://twitter.com/intent/tweet?screen_name=<%= prize.winner.tweet.screen_name %>&text=<%= tweet_text %>" class="twitter-mention-button" data-size="large" data-related="<%= prize.winner.tweet.screen_name %>">Tweet to @<%= prize.winner.tweet.screen_name %></a>
