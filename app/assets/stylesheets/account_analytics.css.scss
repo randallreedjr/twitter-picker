@@ -1,0 +1,16 @@
+// Place all the styles related to the AccountAnalytics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+.container .chart {
+  margin-top: 10px;
+}

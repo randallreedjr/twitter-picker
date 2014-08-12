@@ -20,8 +20,9 @@ Rails.application.routes.draw do
     end
     resources :tweets, :only => :index
     resources :announcements, :only => :create
+    resources :analytics, :only => :index
   end
-  resources :analytics, :only => :index
+  resources :account_analytics, :only => :index
   #resources :users  
 
 
