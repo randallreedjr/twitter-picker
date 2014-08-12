@@ -41,30 +41,34 @@
     <%= f.check_box :tweet_at_creation, :checked => true %>
     <%= f.label :tweet_at_creation %>
   </div>
-
+<div id="prizes">
   <h2>Prizes</h2>
   <ul>
   <%= f.fields_for :prizes do |p| %>
+    
     <li>
       <p>
       <%= p.label :name %>
       <%= p.text_field :name %>
       </p>
       <p>
-      <%= p.label :description %>
-      <%= p.text_field :description %>
-      </p>
-      <p>
       <%= p.label :how_many %>
       <%= p.number_field :number %>
       </p>
+      <button class="delete-prize">Delete</button>
     </li>
+
     
   <% end %>
+  </div>
+  <button class="add-prize">Add a prize</button>
+  
   </ul>
+
 
   <div class="actions">
     <%= f.submit :class => "btn btn-info" %>
   </div>
 
 <% end %>
+

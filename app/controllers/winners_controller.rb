@@ -22,7 +22,6 @@ class WinnersController < ApplicationController
         :entry_time => @winner.readable_entry_time,
         :prize_id => @winner.winner.prize_id,
         :prize_name => @winner.winner.prize.name,
-        :prize_description => @winner.winner.prize.description
       }
       
       render :json => [winner_json]

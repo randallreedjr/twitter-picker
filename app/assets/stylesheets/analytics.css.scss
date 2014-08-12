@@ -2,14 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.reach {
+.reach, .impressions {
   
 text-align: center;
   font-size: 20px;
-  
+
 }
 
-.reach-score {
+.reach-score,
+.impressions-score {
   font-size: 96px;
   padding-top: 46px;
 color: #139AE9;

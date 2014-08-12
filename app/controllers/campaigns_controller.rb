@@ -152,6 +152,6 @@ class CampaignsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def campaign_params
-      params.require(:campaign).permit(:hashtag, :start_time, :end_time, :completed, :tweet_at_creation, :max_entries, :prizes_attributes => [:id, :name, :description])
+      params.require(:campaign).permit(:hashtag, :start_time, :end_time, :completed, :tweet_at_creation, :max_entries, :prizes_attributes => [:id, :name, :number])
     end
 end

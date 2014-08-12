@@ -5,6 +5,6 @@ FactoryGirl.define do
     campaign_id 1
     winner_id 1
     name "MyString"
-    description "MyString"
+    number 1
   end
 end

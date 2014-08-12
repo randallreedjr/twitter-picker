@@ -3,7 +3,7 @@
 <h4><%= link_to '<< Back to campaign', campaign_path(@campaign) %></h4>
 <% @winners.each do |winner| %>
 <p>
-<%= winner.prize.name %> - <%= winner.prize.description %>
+<%= winner.prize.name %>
 <br>Won by:<br>
 <%= winner.tweet.screen_name %> tweeted:
 <br>
