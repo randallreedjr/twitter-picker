@@ -76,7 +76,7 @@ class CampaignsController < ApplicationController
   def new
     if logged_in?
       @campaign = Campaign.new
-      3.times {@campaign.prizes.build}
+      @campaign.prizes.build
     else
       redirect_to root_url
     end
