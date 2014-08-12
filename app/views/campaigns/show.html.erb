@@ -71,9 +71,13 @@
     <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
   <% end %>
 </p>
-<%= form_for [@campaign, Announcement.new] do |f| %>
-<%= f.submit 'Send Announcement Tweet', :class => "btn btn-info" %>
-<% end %>
+
+<div class="twitter-hashtag-button btn">
+<a href="https://twitter.com/intent/tweet?button_hashtag=<%= @campaign.hashtag %>&text=New%20raffle%20-%20tweet%20%23<%= @campaign.hashtag[1..-1]%>%20to%20enter%2C%20or%20RT%20this%20message!%20Ends%20<%= @campaign.readable_end_time.gsub(" ","%20")%>!%20Powered%20by%20@pickerpool" class="twitter-hashtag-button" data-size="large" data-related="<%= current_user.screen_name %>">Tweet #<%=@campaign.hashtag%></a>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+</div>
+
 <%= link_to 'View analtyics', campaign_analytics_path(@campaign), :class => "btn btn-warning" %>
 <p>
 <%= link_to 'Edit', edit_campaign_path(@campaign) %> |
