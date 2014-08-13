@@ -1,14 +1,13 @@
 <h2><%= @campaign.hashtag %></h2>
 <h3>Reach</h3>
 <div class="reach">
-  <div class="reach-score"><%= Tweeter.where(:campaign_id => 2).sum(:followers_count) %></div>
+  <div class="reach-score"><%= Tweeter.where(:campaign_id => @campaign.id).sum(:followers_count) %></div>
 accounts reached
 </div>
 <h3>Exposure</h3>
 <div class="impressions">
-  <div class="impressions-score"><%= Tweet.where(:campaign_id => 2).sum(:followers_count) %></div>
+  <div class="impressions-score"><%= Tweet.where(:campaign_id => @campaign.id).sum(:followers_count) %></div>
 impressions
 </div>
-<h3>Activity</h3>
 <h3>Tweets over time</h3>
 <%= line_chart Campaign.find(@campaign.id).tweets.group_by_hour(:entry_time).count %>
