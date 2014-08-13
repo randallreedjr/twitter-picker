@@ -1,6 +1,7 @@
 class Prize < ActiveRecord::Base
   belongs_to :campaign
   has_one :winner, :dependent => :destroy
+  validates_presence_of :name
 
   def choose_winner
     tweets = Tweet.joins(:campaign).where(:valid_entry => true,:campaigns => {:id => self.campaign.id})

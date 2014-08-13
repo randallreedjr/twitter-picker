@@ -1,8 +1,10 @@
 <li class="prize"><%= prize.name %>
       <div class="result">
         <div class="no-winner <%= "hide-form" if prize.winner%>">
-        <%= form_for [campaign, prize, Winner.new], :html => {:class => "pick-form"} do |f| %>
-          <%= f.submit 'Pick winner', :class => "btn btn-warning pick-winner" %>
+        <% if campaign.tweets.count > 0 %>
+          <%= form_for [campaign, prize, Winner.new], :html => {:class => "pick-form"} do |f| %>
+            <%= f.submit 'Pick winner', :class => "btn btn-warning pick-winner" %>
+          <% end %>
         <% end %>
         </div>
       <% if prize.winner %>
