@@ -1,6 +1,9 @@
 </div>
 <div class="campaign-right-bar">
-<iframe scrolling="no" frameborder="no" style="overflow:hidden;border:0;margin:0;padding:0;width:120px;height:40px;"src="http://www.clocklink.com/html5embed.php?clock=004&timezone=EST&color=yellow&size=120&Title=&Message=&Target=&From=2014,1,1,0,0,0&Color=yellow"></iframe>
-  <div class='next-job'>Polling twitter at:<%= TwitterAPI.next_job_run %>
+  <div class="right-content">
+    <div class='next-job'>Time is currently</div>
+    <iframe scrolling="no" frameborder="no" style="overflow:hidden;border:0;margin:0;padding:0;width:120px;height:40px;"src="http://www.clocklink.com/html5embed.php?clock=004&timezone=EST&color=yellow&size=120&Title=&Message=&Target=&From=2014,1,1,0,0,0&Color=yellow"></iframe>
+    <div class='next-job'>Polling twitter at <%= TwitterAPI.next_job_run %>
+    </div>
   </div>
 </div>    

@@ -5,6 +5,11 @@
   height: 100%;
   border-radius: 4px;
   width: 15%;
+  min-height: 200px;
+}
+.next-job {
+  font-size: 2em;
+  color: #139AE9;
 }
 
 .campaign-right-bar {
@@ -15,6 +20,14 @@
   border-radius: 4px;
   width: 15%;
   color: white;
+  min-height: 200px;
+  text-align: center;
+  position: relative;
+  overflow: auto;
+}
+
+.right-content {
+  position:absolute; top:50%; height:20em; margin-top:-6em;
 }
 
 .container {
@@ -42,6 +55,7 @@
   
   min-height: 100%;
   background-color: #FFC044;
+  background: url('/assets/pool.jpg') no-repeat center center fixed; 
 }
 
 @media (min-width: 768px) {
