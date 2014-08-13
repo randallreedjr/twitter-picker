@@ -12,7 +12,13 @@ class TwitterAPI
 
   def self.next_job_run
     time = Time.now
-    "#{time.strftime('%l')}:#{((time.min / 10)+1)*10}#{time.strftime('%p')}"
+    hour = time.strftime('%l')
+    min = ((time.min / 10)+1)*10
+    if min == 60
+      hour += 1
+      min = 0
+    end
+    "#{hour}:#{min}#{time.strftime('%p')}"
   end
 
   def access_token
