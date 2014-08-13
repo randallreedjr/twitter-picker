@@ -7,5 +7,6 @@ class AccountAnalyticsController < ApplicationController
       @hashtags << campaign.hashtag
     end
     @max = @data.max
+    @active = "analytics"
   end
 end

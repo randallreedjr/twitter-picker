@@ -30,7 +30,7 @@
 
 .campaign-title {
   float: left;
-  width: 70%;
+  width: 50%;
   overflow: auto;
   position: absolute;
   top: 50%;
@@ -47,16 +47,9 @@
 
 .campaign-delete a,
 .campaign-cancel a,
-.campaign-edit a {
-  color: white;
-}
-
+.campaign-edit a,
 .campaign-analytics a {
-  color: #555;
-}
-
-.fa-bar-chart-o {
-  color: #555;
+  color: white;
 }
 
 .campaign-delete a:hover,

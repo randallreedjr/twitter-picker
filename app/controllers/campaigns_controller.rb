@@ -139,7 +139,7 @@ class CampaignsController < ApplicationController
     if logged_in?
       @campaign.destroy
       respond_to do |format|
-        format.html { redirect_to campaigns_url, notice: 'Campaign was successfully destroyed.' }
+        format.html { redirect_to campaigns_url, notice: 'Campaign was successfully deleted.' }
         format.json { head :no_content }
       end
     else
