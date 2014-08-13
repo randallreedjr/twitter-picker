@@ -173,12 +173,12 @@ fieldset[disabled] .btn-xl.active {
 
 .btn-xl .badge {
     color: #fed136;
-    background-color: #fff;
 }
 
 .navbar-default {
     /*border-color: transparent;*/
-    background-color: #222;
+    opacity: 0.75;
+    background-color: #2F4F4F;
 }
 
 .navbar-default .navbar-brand {
@@ -186,11 +186,12 @@ fieldset[disabled] .btn-xl.active {
     color: #fed136;
 }
 
+
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus,
 .navbar-default .navbar-brand:active,
 .navbar-default .navbar-brand.active {
-    color: #fec503;
+    color: #1B82EC;
 }
 
 .navbar-default .navbar-collapse {
@@ -214,7 +215,7 @@ fieldset[disabled] .btn-xl.active {
 .navbar-default .nav li a {
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 1px;
     color: #fff;
 }
@@ -239,7 +240,7 @@ fieldset[disabled] .btn-xl.active {
 
 @media(min-width:768px) {
     .navbar-default {
-        padding: 25px 0;
+        padding: 0px 0;
         border: 0;
         /*background-color: transparent;*/
         -webkit-transition: padding .3s;
