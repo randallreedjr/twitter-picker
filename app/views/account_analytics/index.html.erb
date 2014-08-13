@@ -3,5 +3,5 @@
 <h3>Tweets over time</h3>
 <%= line_chart User.find(current_user.id).tweets.group_by_minute(:entry_time).count %>
 <h3>Total Reach per Campaign</h3>
-<%= column_chart Campaign.joins(:tweets).where(:user_id => current_user.id).group('campaigns.hashtag').sum('tweets.followers_count') %>
-<%= pie_chart Campaign.joins(:tweets).where(:user_id => current_user.id).group('campaigns.hashtag').sum('tweets.followers_count') %>
+<%= column_chart Tweeter.joins(:campaign).where(:campaigns => {:user_id => current_user.id}).group(:hashtag).sum(:followers_count) %>
+<%= pie_chart Tweeter.joins(:campaign).where(:campaigns => {:user_id => current_user.id}).group(:hashtag).sum(:followers_count) %>
