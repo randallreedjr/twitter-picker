@@ -31,6 +31,16 @@ class Campaign < ActiveRecord::Base
     end_time.strftime('%b %-d, %Y %l:%M%P')
   end
 
+  def delete_prizes(params)
+    params[:prizes_attributes].each_value do |v|
+      if !v.has_key?("name") && !v.has_key?("number")
+        if prize = Prize.find_by(id: v[:id], campaign_id: self.id)
+          prize.destroy
+        end
+      end
+    end
+  end
+
   def find_tweets
     twitter = TwitterAPI.new
     start_time = self.start_time.strftime('%Y-%m-%d')

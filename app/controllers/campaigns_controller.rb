@@ -121,6 +121,7 @@ class CampaignsController < ApplicationController
     if logged_in?
       respond_to do |format|
         if @campaign.update(campaign_params)
+          @campaign.delete_prizes(campaign_params)
           format.html { redirect_to @campaign, notice: 'Campaign was successfully updated.' }
           format.json { render :show, status: :ok, location: @campaign }
         else
