@@ -63,8 +63,8 @@
       <%= p.text_field :name %>
       </p>
       <p>
-      <%= p.label :how_many, :class => "prize-label" %>
-      <%= p.number_field :number %>
+      <%= p.label :number, 'How many', :class => "prize-label" %>
+      <%= p.number_field :number, :value => 1, :readonly => true %>
       </p>
       <button class="btn btn-danger delete-prize">Delete</button>
     </li>
