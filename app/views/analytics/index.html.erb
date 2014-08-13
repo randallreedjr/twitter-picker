@@ -1,3 +1,4 @@
+
 <h2><%= @campaign.hashtag %></h2>
 <h3>Reach</h3>
 <div class="reach">
@@ -10,4 +11,5 @@ accounts reached
 impressions
 </div>
 <h3>Tweets over time</h3>
-<%= line_chart Campaign.find(@campaign.id).tweets.group_by_hour(:entry_time).count %>
+<%= line_chart Campaign.find(@campaign.id).tweets.group_by_hour(:entry_time).count, colors: ["#139AE9"] %>
+
