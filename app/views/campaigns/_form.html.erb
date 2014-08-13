@@ -14,52 +14,63 @@
   <h2>Campaign completed</h2>
   <% end %>
   <div class="field">
+    <p>
     <%= f.label :hashtag %><br>
     <%= f.text_field :hashtag, :readonly => @campaign.over? %>
+    </p>
   </div>
   <div class="field">
+    <p>
     <%= f.label :start_time %><br>
     <%= f.datetime_select(:start_time, ampm: true, :default => {:hour => 12, :minute => 00}, :disabled => @campaign.over?) %>
+    </p>
   </div>
   <div class="field">
+    <p>
     <%= f.label :end_time %><br>
     <%= f.datetime_select :end_time, ampm: true, :default => {:hour => 18, :minute => 00}, :disabled => @campaign.over? %>
+    </p>
   </div>
   <% if @campaign.id %>
   <div class="field">
+    <p>
     <%= f.check_box :completed %>
     <%= f.label :completed %>
+    </p>
   </div>
   <% end %>
   
   <div class="field">
+    <p>
     <%= f.label :max_entries %>
     <%= f.number_field :max_entries, :value => 1 %>
+    </p>
   </div>
 
   <div class="field">
+    <p>
     <%= f.check_box :tweet_at_creation, :checked => true %>
     <%= f.label :tweet_at_creation %>
+    </p>
   </div>
 <div id="prizes">
   <h2>Prizes</h2>
-  <ul>
+  <ol class="prize-list">
   <%= f.fields_for :prizes do |p| %>
-    
-    <li>
+    <li class="prize">
       <p>
-      <%= p.label :name %>
+      <%= p.label :name, :class => "prize-label" %>
       <%= p.text_field :name %>
       </p>
       <p>
-      <%= p.label :how_many %>
+      <%= p.label :how_many, :class => "prize-label" %>
       <%= p.number_field :number %>
       </p>
       <button class="btn btn-danger delete-prize">Delete</button>
     </li>
   <% end %>
   </div>
-  </ul>
+  </ol>
 <button class="btn btn-warning add-prize">Add a prize</button>
 <hr>
   <div class="actions">
