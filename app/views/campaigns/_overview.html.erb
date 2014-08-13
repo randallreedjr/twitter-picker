@@ -4,6 +4,7 @@
     
     <button class="campaign-delete btn btn-danger"><%= link_to 'Delete', @campaign, method: :delete, data: { confirm: 'Are you sure you want to delete this campaign? This will permanently affect your analytics.' } %><i class="fa fa-trash-o"></i></button>
     <button class="campaign-edit btn btn-info"><%= link_to 'Edit', edit_campaign_path(@campaign) %><i class="fa fa-pencil"></i></button>
+    <button class="campaign-analytics btn btn-primary"><%= link_to 'Analytics', campaign_analytics_path(@campaign) %><i class="fa fa-bar-chart-o"></i></button>
   </div>
   <div class="panel-body">
     <div class="campaign-status">

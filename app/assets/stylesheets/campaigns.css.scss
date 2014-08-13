@@ -38,7 +38,9 @@
   margin-top:-0.5em;
 }
 
-.campaign-delete {
+.campaign-delete,
+.campaign-edit,
+.campaign-analytics {
   float: right;
   margin: 0 3px;
 }
@@ -48,15 +50,20 @@
 .campaign-edit a {
   color: white;
 }
-.campaign-delete a:hover,
-.campaign-cancel a:hover,
-.campaign-edit a:hover {
-  text-decoration: none;
+
+.campaign-analytics a {
+  color: #555;
 }
 
-.campaign-edit {
-  float: right;
-  margin: 0 3px;
+.fa-bar-chart-o {
+  color: #555;
+}
+
+.campaign-delete a:hover,
+.campaign-cancel a:hover,
+.campaign-edit a:hover,
+.campaign-analytics a:hover {
+  text-decoration: none;
 }
 
 .campaign-cancel,
