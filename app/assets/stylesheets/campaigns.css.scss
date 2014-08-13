@@ -22,3 +22,68 @@
 .repick-form {
   display: inline;
 }
+
+.panel-heading {
+  overflow: auto;
+  position: relative;
+}
+
+.campaign-title {
+  float: left;
+  width: 70%;
+  overflow: auto;
+  position: absolute;
+  top: 50%;
+  height:2em; 
+  margin-top:-0.5em;
+}
+
+.campaign-delete {
+  float: right;
+  margin: 0 3px;
+}
+
+.campaign-delete a,
+.campaign-cancel a,
+.campaign-edit a {
+  color: white;
+}
+.campaign-delete a:hover,
+.campaign-cancel a:hover,
+.campaign-edit a:hover {
+  text-decoration: none;
+}
+
+.campaign-edit {
+  float: right;
+  margin: 0 3px;
+}
+
+.campaign-cancel,
+.edit_campaign,
+.actions {
+  display: inline;
+}
+
+
+.campaign-update, 
+.campaign-cancel {
+  margin: 0 5px 10px;
+}
+
+.campaign-separator {
+  color: blue;
+}
+
+hr {
+  border-top: 2px solid #139AE9;
+}
+
+.add-prize {
+  display: block;
+  margin: 0 5px 20px;
+}
+
+.fa {
+  margin: 0 0 0 5px;
+}

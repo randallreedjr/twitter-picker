@@ -55,15 +55,15 @@
       <%= p.label :how_many %>
       <%= p.number_field :number %>
       </p>
-      <button class="delete-prize">Delete</button>
+      <button class="btn btn-danger delete-prize">Delete</button>
     </li>
   <% end %>
   </div>
   </ul>
-<button class="add-prize">Add a prize</button>
-
+<button class="btn btn-warning add-prize">Add a prize</button>
+<hr>
   <div class="actions">
-    <%= f.submit :class => "btn btn-info" %>
+    <%= f.submit :class => "btn btn-info campaign-update" %>
   </div>
 
 <% end %>

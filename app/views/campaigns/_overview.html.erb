@@ -1,27 +1,29 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= link_to @campaign.hashtag, @campaign %></h3>
+    <h3 class="panel-title campaign-title"><%= link_to @campaign.hashtag, @campaign %></h3>
+    
+    <button class="campaign-delete btn btn-danger"><%= link_to 'Delete', @campaign, method: :delete, data: { confirm: 'Are you sure you want to delete this campaign? This will permanently affect your analytics.' } %><i class="fa fa-trash-o"></i></button>
+    <button class="campaign-edit btn btn-info"><%= link_to 'Edit', edit_campaign_path(@campaign) %><i class="fa fa-pencil"></i></button>
   </div>
   <div class="panel-body">
     <div class="campaign-status">
+      <p>
       Status: 
       <% if @campaign.over? %>
         Completed
       <% else %>
         Active
       <% end %>
+      </p>
     </div>
     <div class="campaign-start">
-      Start: <%= @campaign.start_time.strftime('%h %d, %Y %l:%M%P') %>
+      <p>Start: <%= @campaign.readable_start_time %></p>
     </div>
     <div class="campaign-end">
-      End: <%= @campaign.end_time.strftime('%h %d, %Y %l:%M%P') %>
+      <p>End: <%= @campaign.readable_end_time %></p>
     </div>
-    <div class="campaign-edit">
-      <%= link_to 'Edit', edit_campaign_path(@campaign) %>
-    </div>
-    <div class="campaign-destroy">
-      <%= link_to 'Destroy', @campaign, method: :delete, data: { confirm: 'Are you sure you want to delete this campaign? This will permanently affect your analytics.' } %>
+    <div class="campaign-tweets">
+      <p>Tweets: <%= @campaign.tweets.count %></p>
     </div>
   </div>
 </div>

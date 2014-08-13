@@ -97,6 +97,9 @@ class CampaignsController < ApplicationController
       if !@campaign.hashtag.start_with?("#")
         @campaign.hashtag = "#" + @campaign.hashtag
       end
+      if @campaign.hashtag.include?(" ")
+        @campaign.hashtag.gsub!(" ","")
+      end
 
       respond_to do |format|
         if @campaign.save
