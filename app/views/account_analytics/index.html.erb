@@ -1,11 +1,10 @@
 <h3>Tweets per campaign</h3>
-  <%= column_chart User.find(current_user.id).tweets.group(:campaign_id).count, colors: ["#139AE9"]%>
-
+<%= column_chart Tweet.joins(:campaign).where(:campaigns => {:user_id => current_user.id }).group(:hashtag).count, colors: ["#139AE9"] %>
 
 <h3>Tweets over time</h3>
-  <%= line_chart User.find(current_user.id).tweets.group_by_minute(:entry_time).count, colors: ["#139AE9"]%>
-
+<%= line_chart Tweet.joins(:campaign).where(:campaigns => {:user_id => current_user.id }).group_by_day(:entry_time).count, colors: ["#139AE9"] %>
 
 <h3>Total Reach per Campaign</h3>
-  <%= column_chart Campaign.joins(:tweets).where(:user_id => current_user.id).group('campaigns.hashtag').sum('tweets.followers_count'), colors: ["#139AE9", '#FAD000'] %>
-  <%= pie_chart Campaign.joins(:tweets).where(:user_id => current_user.id).group('campaigns.hashtag').sum('tweets.followers_count'), colors: ["#139AE9", '#FAD000', '#FF1493'] %>
+<%= column_chart Tweeter.joins(:campaign).where(:campaigns => {:user_id => current_user.id}).group(:hashtag).sum(:followers_count), colors: ["#139AE9"] %>
+<%= pie_chart Tweeter.joins(:campaign).where(:campaigns => {:user_id => current_user.id}).group(:hashtag).sum(:followers_count), colors: ["#139AE9", '#FAD000', '#FF1493']  %>
+
