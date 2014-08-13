@@ -21,63 +21,35 @@
   <h3>Campaign ongoing</h3>
 </p>
 <% end %>
+<h2>Prizes</h2>
 <p>
 <%= link_to 'Pick winners for all prizes', campaign_show_all_winners_path(@campaign) %>
-<ol>
+</p>
+<ol class="prize-list">
 <% @prizes.each do |prize| %>
-  <% if !prize.name.empty? %>
-    <li><%= prize.name %></li>
-      <div class="result">
-        <div class="no-winner <%= "hide-form" if prize.winner%>">
-        <%= form_for [@campaign, prize, Winner.new], :html => {:class => "pick-form"} do |f| %>
-          <%= f.submit 'Pick winner', :class => "btn btn-warning pick-winner" %>
-        <% end %>
-        </div>
-      <% if prize.winner %>
-        
-        <div class="winning-tweet">
-          <blockquote class="twitter-tweet" lang="en">
-          <p><%= prize.winner.tweet.text %></p>&mdash; <%= prize.winner.tweet.name %> (<%= prize.winner.tweet.screen_name %>) <a href="https://twitter.com/<%= prize.winner.tweet.screen_name%>/statuses/<%= prize.winner.tweet.status_id %>"><%= prize.winner.tweet.entry_time.strftime("%h %d, %Y") %></a></blockquote>
-          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-
-      <% end %>
-      <% repick_class = prize.winner ? "repick-form" : "hide-form" %>
-      <%= form_for [@campaign, prize, prize.winner || Winner.new], method: :delete, :html => {:class => repick_class} do |f| %>
-        <%= f.submit "Repick", :class => "btn btn-danger repick-winner" %>
-      <% end %>
-      <% if prize.winner %>
-        <% tweet_text = "Congratulations! You won #{prize.name} in the #{@campaign.hashtag} giveaway!" %>
-
-        <div class="tweet-to-winner btn">
-          <a href="https://twitter.com/intent/tweet?screen_name=<%= prize.winner.tweet.screen_name %>&text=<%= tweet_text %>" class="twitter-mention-button" data-size="large" data-related="<%= prize.winner.tweet.screen_name %>">Tweet to @<%= prize.winner.tweet.screen_name %></a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+  <%= render :partial => 'prizes/show', :locals => {:prize => prize, :campaign => @campaign} %>
 <% end %>
 </ol>
-</p>
+
 <p>
   <%= @campaign.tweets.count %> <%= "tweet".pluralize(@campaign.tweets.count) %> collected. 
   <% if !@campaign.over? %>
-  | <%= link_to 'Load more tweets', refresh_tweets_path(@campaign) %>
+  | <%= link_to 'Load more tweets', refresh_tweets_path(@campaign), :class => "blue-link" %><i class="fa fa-twitter"></i>
   <% end %>
   <br>
   <% if @campaign.tweets.any? %>
     <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
   <% end %>
 </p>
-
-<div class="twitter-hashtag-button btn">
+<form action="<%= edit_campaign_path(@campaign) %>" method="get" class="edit-btn">
+  <button type="submit" 
+     class="btn btn-info" />Edit<i class="fa fa-pencil"></i></button>
+</form>
+<%= link_to 'View analtyics', campaign_analytics_path(@campaign), :class => "btn btn-warning" %>
+<div class="btn twitter-hashtag-button">
 <a href="https://twitter.com/intent/tweet?button_hashtag=<%= @campaign.hashtag %>&text=New%20raffle%20-%20tweet%20%23<%= @campaign.hashtag[1..-1]%>%20to%20enter%2C%20or%20RT%20this%20message!%20Ends%20<%= @campaign.readable_end_time.gsub(" ","%20")%>!%20Powered%20by%20@pickerpool" class="twitter-hashtag-button" data-size="large" data-related="<%= current_user.screen_name %>">Tweet #<%=@campaign.hashtag%></a>
 
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 
-<%= link_to 'View analtyics', campaign_analytics_path(@campaign), :class => "btn btn-warning" %>
-<p>
-<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
-<%= link_to 'Back', campaigns_path %>
-</p>
+

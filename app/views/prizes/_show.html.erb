@@ -1,0 +1,30 @@
+<li class="prize"><%= prize.name %>
+      <div class="result">
+        <div class="no-winner <%= "hide-form" if prize.winner%>">
+        <%= form_for [campaign, prize, Winner.new], :html => {:class => "pick-form"} do |f| %>
+          <%= f.submit 'Pick winner', :class => "btn btn-warning pick-winner" %>
+        <% end %>
+        </div>
+      <% if prize.winner %>
+        
+        <div class="winning-tweet">
+          <blockquote class="twitter-tweet" lang="en">
+          <p><%= prize.winner.tweet.text %></p>&mdash; <%= prize.winner.tweet.name %> (<%= prize.winner.tweet.screen_name %>) <a href="https://twitter.com/<%= prize.winner.tweet.screen_name%>/statuses/<%= prize.winner.tweet.status_id %>"><%= prize.winner.tweet.entry_time.strftime("%h %d, %Y") %></a></blockquote>
+          <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
+
+      <% end %>
+      <% repick_class = prize.winner ? "repick-form" : "hide-form" %>
+      <%= form_for [campaign, prize, prize.winner || Winner.new], method: :delete, :html => {:class => repick_class} do |f| %>
+        <%= f.submit "Repick", :class => "btn btn-danger repick-winner" %>
+      <% end %>
+      <% if prize.winner %>
+        <% tweet_text = "Congratulations! You won #{prize.name} in the #{campaign.hashtag} giveaway!" %>
+
+        <div class="tweet-to-winner btn">
+          <a href="https://twitter.com/intent/tweet?screen_name=<%= prize.winner.tweet.screen_name %>&text=<%= tweet_text %>" class="twitter-mention-button" data-size="large" data-related="<%= prize.winner.tweet.screen_name %>">Tweet to @<%= prize.winner.tweet.screen_name %></a>
+          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        </div>
+      </li>
+      <% end %>
+    </div>

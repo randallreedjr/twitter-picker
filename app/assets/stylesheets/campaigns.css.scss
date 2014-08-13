@@ -19,8 +19,22 @@
   width: 20%;
 }
 
-.repick-form {
+.repick-form,
+.edit-btn {
   display: inline;
+}
+
+.edit-btn {
+  margin: 0 5px 0;
+}
+
+div.twitter-hashtag-button {
+  padding: 5px;
+}
+
+.blue-link,
+.fa-twitter {
+  color: #139AE9;
 }
 
 .panel-heading {
