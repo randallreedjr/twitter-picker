@@ -1,16 +1,14 @@
 class WinnersController < ApplicationController
   def create
+
     if logged_in?
       @campaign = Campaign.find(params[:campaign_id])
       @prize = Prize.find_by(campaign_id: @campaign.id, id: params[:prize_id])
       @winner = Tweet.new
+
       if @prize 
         @winner = @prize.choose_winner
-      #else
-        #@winners = Winner.joins("INNER JOIN prizes ON prizes.winner_id = winners.id").where("prizes.campaign_id = ?", @campaign.id)
       end
-      #redirect_to campaign_path(@campaign)
-      #respond_to do |format|
       
       winner_json = {
         :text => @winner.text,
@@ -25,12 +23,6 @@ class WinnersController < ApplicationController
       }
       
       render :json => [winner_json]
-      #render :json => [@winner], :include => :winner
-      #render :json => @winner.to_json, :include => [:winner,:prize]
-
-      
-      #end
-      #render :json => @winner
     else
       redirect_to root_url
     end
@@ -42,7 +34,6 @@ class WinnersController < ApplicationController
       if @campaign.user_id == current_user.id
         @winner = Winner.find(params[:id])
         @winner.clear_prize
-        #redirect_to campaign_path(@campaign)
         render json:{}
       else
         reset_session
@@ -73,5 +64,4 @@ class WinnersController < ApplicationController
       redirect_to campaign_path(@campaign)
     end
   end
-#errors: redirection issue after picking winners, not all winners are picked, need to refactor prize to avoid useless redirection
 end

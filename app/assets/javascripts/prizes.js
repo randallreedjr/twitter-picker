@@ -11,16 +11,15 @@ $( document ).ready(function(){
       success: function(d){
         var tweet = JSON.parse(d);
         var $repick = $form.parent().parent().find('form').last()[0];
-        $repick.action = '/campaigns/' + tweet[0].campaign_id + '/prizes/' + tweet[0].prize_id + '/winners/' + tweet[0].winner_id
-
-        $repick.className = "repick-form"
+        $repick.action = '/campaigns/' + tweet[0].campaign_id + '/prizes/' + tweet[0].prize_id + '/winners/' + tweet[0].winner_id;
+        $repick.className = "repick-form";
         $repick.removeAttribute('style');
         $form.parent().parent().prepend('<div class="winning-tweet"><blockquote class="twitter-tweet" lang="en"><p>'+tweet[0].text+'</p>&mdash; '+tweet[0].name+' (' + tweet[0].screen_name +') <a href="https://twitter.com/'+tweet[0].screen_name+'/statuses/'+tweet[0].status_id_str+'">'+tweet[0].entry_time+'</a></blockquote><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script></div>');
         var $hashtag = $('#hashtag').text();
         var prizeText = tweet[0].prize_name;
         
         var tweetText = 'Congratulations! You won ' + prizeText + ' in the ' + $hashtag + ' giveaway!';
-        $form.parent().parent().append('<div class="tweet-to-winner btn"><a href="https://twitter.com/intent/tweet?screen_name='+ tweet[0].screen_name + '&text=' + tweetText +'" class="twitter-mention-button" data-size="large" data-related="'+ tweet[0].screen_name +'">Tweet to @'+ tweet[0].screen_name +'</a></div>');//<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?\'http\':\'https\';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\'://platform.twitter.com/widgets.js\';fjs.parentNode.insertBefore(js,fjs);}}(document, \'script\', \'twitter-wjs\');</script></div>');
+        $form.parent().parent().append('<div class="tweet-to-winner btn"><a href="https://twitter.com/intent/tweet?screen_name='+ tweet[0].screen_name + '&text=' + tweetText +'" class="twitter-mention-button" data-size="large" data-related="'+ tweet[0].screen_name +'">Tweet to @'+ tweet[0].screen_name +'</a></div>');
         
       },
       failure: function(){alert('Could not pick winner');}
