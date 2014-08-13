@@ -37,6 +37,7 @@
 <% if inside? %>
   <%= render "layouts/loggedin" %>
   <%= yield %>
+  <%= render "layouts/rightbar" %>
   <%= render "layouts/loggedinfooter" %>
 <% else %>
   <%= render "layouts/nav" %>
