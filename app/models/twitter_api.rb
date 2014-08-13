@@ -10,6 +10,11 @@ class TwitterAPI
     @path    = "/1.1/search/tweets.json"
   end
 
+  def self.next_job_run
+    time = Time.now
+    "#{time.strftime('%l')}:#{((time.min / 10)+1)*10}#{time.strftime('%p')}"
+  end
+
   def access_token
     @access_token
   end
