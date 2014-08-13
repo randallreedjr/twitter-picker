@@ -6,6 +6,8 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_provider_and_uid(auth_hash[:provider], auth_hash[:uid]) || User.create_from_omniauth(auth_hash)
     if @user
+      @user.followers_count = auth_hash[:extra][:raw_info][:followers_count]
+      @user.save
       session[:user_id] = @user.id
       redirect_to '/campaigns/ongoing'
     else
