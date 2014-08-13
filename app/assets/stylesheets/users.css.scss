@@ -23,11 +23,11 @@
   min-height: 200px;
   text-align: center;
   position: relative;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .right-content {
-  position:absolute; top:50%; height:20em; margin-top:-6em;
+  position:absolute; padding:5% 0;
 }
 
 .container {
