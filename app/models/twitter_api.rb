@@ -14,11 +14,16 @@ class TwitterAPI
     time = Time.now
     hour = time.strftime('%l')
     min = ((time.min / 10)+1)*10
+    ampm = time.strftime('%p')
     if min == 60
-      hour += 1
-      min = 0
+      hour = hour.to_i + 1
+      min = "00"
+      if hour == 12
+        ampm = (ampm == "AM" ?  "PM" : "AM")
+      end
     end
-    "#{hour}:#{min}#{time.strftime('%p')}"
+
+    "#{hour}:#{min}#{ampm}"
   end
 
   def access_token
