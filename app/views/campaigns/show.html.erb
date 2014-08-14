@@ -22,9 +22,9 @@
 </p>
 <% end %>
 <h2>Prizes</h2>
-<p>
-<%= link_to 'Pick winners for all prizes', campaign_show_all_winners_path(@campaign) %>
-</p>
+<!--<p>
+<%# link_to 'Pick winners for all prizes', campaign_show_all_winners_path(@campaign) %>
+</p>-->
 <ol class="prize-list">
 <% @prizes.each do |prize| %>
   <%= render :partial => 'prizes/show', :locals => {:prize => prize, :campaign => @campaign} %>
