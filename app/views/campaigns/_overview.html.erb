@@ -17,22 +17,22 @@
   <div class="panel-body">
     <div class="campaign-status">
       <p>
-      Status: 
+      <span class="coloring"> Status: </span>
       <% if @campaign.over? %>
-        Completed
+      <span class="completed">  Completed </span>
       <% else %>
-        Active
+      <span class="active">  Active </span>
       <% end %>
       </p>
     </div>
     <div class="campaign-start">
-      <p>Start: <%= @campaign.readable_start_time %></p>
+      <p> <span class="coloring"> Start:</span> <%= @campaign.readable_start_time %></p>
     </div>
     <div class="campaign-end">
-      <p>End: <%= @campaign.readable_end_time %></p>
+      <p><span class="coloring">End:</span> <%= @campaign.readable_end_time %></p>
     </div>
     <div class="campaign-tweets">
-      <p>Tweets: <%= @campaign.tweets.count %></p>
+      <p><span class="coloring">Tweets:</span> <%= @campaign.tweets.count %></p>
     </div>
   </div>
 </div>
