@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/campaigns/ongoing' => 'campaigns#ongoing'
   get '/campaigns/completed' => 'campaigns#completed'
   get '/campaigns/all' => 'campaigns#all'
-  get '/campaings/admin' => 'campaigns#admin'
+  get '/campaigns/admin' => 'campaigns#admin'
   #get '/campaigns/:id/tweet' => 'campaigns#tweet', as: :tweet_campaign
 
   resources :campaigns do
