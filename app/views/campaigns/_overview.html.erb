@@ -1,18 +1,25 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title campaign-title"><%= link_to @campaign.hashtag, @campaign %></h3>
-    <%= form_for @campaign, data: { confirm: 'Are you sure you want to delete this campaign? This will permanently affect your analytics.' }, :html => {method: :delete} do |f| %>
-      <button class="campaign-delete btn btn-danger" type="submit">Delete<i class="fa fa-trash-o"></i></button>
-    <% end %>
+    <div>
+      <h3 class="panel-title campaign-title"><%= link_to @campaign.hashtag, @campaign %></h3>
+      <% if admin? %>
+        <h4 class="panel-title campaign-user"><%= "(#{@campaign.user.screen_name})" %></h4>
+      <% end %>
+    </div>
+    <div class="campaign-actions">
+      <%= form_for @campaign, data: { confirm: 'Are you sure you want to delete this campaign? This will permanently affect your analytics.' }, :html => {method: :delete} do |f| %>
+        <button class="campaign-delete btn btn-danger" type="submit">Delete<i class="fa fa-trash-o"></i></button>
+      <% end %>
 
-    <form action="<%= edit_campaign_path(@campaign) %>" method="get">
-      <button type="submit" 
-         class="campaign-edit btn btn-info" />Edit<i class="fa fa-pencil"></i></button>
-    </form>
-    <form action="<%= campaign_analytics_path(@campaign) %>" method="get">
-      <button type="submit" 
-         class="campaign-analytics btn btn-primary" />Analytics<i class="fa fa-bar-chart-o"></i></button>
-    </form>
+      <form action="<%= edit_campaign_path(@campaign) %>" method="get">
+        <button type="submit" 
+           class="campaign-edit btn btn-info" />Edit<i class="fa fa-pencil"></i></button>
+      </form>
+      <form action="<%= campaign_analytics_path(@campaign) %>" method="get">
+        <button type="submit" 
+           class="campaign-analytics btn btn-primary" />Analytics<i class="fa fa-bar-chart-o"></i></button>
+      </form>
+    </div>
   </div>
   <div class="panel-body">
     <div class="campaign-status">
