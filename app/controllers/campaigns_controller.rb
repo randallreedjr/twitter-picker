@@ -18,6 +18,7 @@ class CampaignsController < ApplicationController
       @title = "Campaigns for all users"
       @campaigns = Campaign.order(:user_id)
       @active = "admin"
+      render :index
     else
       reset_session
       redirect_to root_url
