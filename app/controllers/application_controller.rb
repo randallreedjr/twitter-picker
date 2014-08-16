@@ -8,6 +8,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  helper_method def admin?
+    current_user.admin?
+  end
+
   helper_method def current_user
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
