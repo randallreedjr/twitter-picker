@@ -81,7 +81,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    if logged_in? && @campaign.user_id == current_user.id
+    if logged_in?
       @campaign = Campaign.new
       @campaign.prizes.build
     else
