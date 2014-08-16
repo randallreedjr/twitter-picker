@@ -61,21 +61,16 @@ class CampaignsController < ApplicationController
   # GET /campaigns/1
   # GET /campaigns/1.json
   def show
-    if logged_in?
-      @campaign = Campaign.find(params[:id])
-      if @campaign.user_id != current_user.id
-        session[:user_id] = nil
-        redirect_to root_url
-      else
+    if logged_in? && (@campaign.user_id == current_user.id || admin?)
         @prizes = @campaign.prizes.sort_by {|p| p.id}
-      end
     else
-      redirect_to root_url 
+      session[:user_id] = nil
+      redirect_to root_url
     end
   end
 
   def refresh
-    if logged_in?
+    if logged_in? && @campaign.user_id == current_user.id
       set_campaign
       @campaign.find_tweets
       redirect_to campaign_path(@campaign)
@@ -86,7 +81,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/new
   def new
-    if logged_in?
+    if logged_in? && @campaign.user_id == current_user.id
       @campaign = Campaign.new
       @campaign.prizes.build
     else
@@ -96,13 +91,13 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1/edit
   def edit
-    redirect_to root_url if !logged_in?
+    redirect_to root_url if !logged_in? || @campaign.user_id != current_user.id
   end
 
   # POST /campaigns
   # POST /campaigns.json
   def create
-    if logged_in?
+    if logged_in? && @campaign.user_id == current_user.id
       @campaign = Campaign.new(campaign_params)
       @campaign.user_id = current_user.id
       @campaign.completed = false
@@ -130,7 +125,7 @@ class CampaignsController < ApplicationController
   # PATCH/PUT /campaigns/1
   # PATCH/PUT /campaigns/1.json
   def update
-    if logged_in?
+    if logged_in? && @campaign.user_id == current_user.id
       respond_to do |format|
         if @campaign.update(campaign_params)
           @campaign.delete_prizes(campaign_params)
@@ -149,13 +144,14 @@ class CampaignsController < ApplicationController
   # DELETE /campaigns/1
   # DELETE /campaigns/1.json
   def destroy
-    if logged_in?
+    if logged_in? && (@campaign.user_id == current_user.id || admin?)
       @campaign.destroy
       respond_to do |format|
         format.html { redirect_to campaigns_url, notice: 'Campaign was successfully deleted.' }
         format.json { head :no_content }
       end
     else
+      reset_session
       redirect_to root_url
     end
   end
