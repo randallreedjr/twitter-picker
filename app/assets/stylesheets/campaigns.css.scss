@@ -51,6 +51,17 @@ div.twitter-hashtag-button {
   top: 50%;
   height:2em; 
   margin-top:-0.5em;
+  font-size: 24px;
+  word-wrap: break-word;
+}
+
+.campaign-title a {
+  text-decoration: underline;
+}
+
+.campaign-user {
+  width: 50%;
+  overflow: auto;
 }
 
 .campaign-delete,
