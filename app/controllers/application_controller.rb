@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method def admin?
-    current_user.admin?
+    logged_in? && current_user.admin?
   end
 
   helper_method def current_user
