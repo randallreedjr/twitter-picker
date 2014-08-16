@@ -5,10 +5,21 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     if logged_in?
-      @title = "All Campaigns"
-      @campaigns = Campaign.where(user_id: current_user.id)
-      @active = "all"
+      @title = "Ongoing Campaigns"
+      @campaigns = Campaign.where(user_id: current_user.id, completed: false)
+      @active = "ongoing"
     else
+      redirect_to root_url
+    end
+  end
+
+  def admin
+    if admin?
+      @title = "Campaigns for all users"
+      @campaigns = Campaign.order(:user_id)
+      @active = "admin"
+    else
+      reset_session
       redirect_to root_url
     end
   end
