@@ -41,11 +41,23 @@
     <%= link_to 'View tweets', campaign_tweets_path(@campaign) %> 
   <% end %>
 </p>
-<form action="<%= edit_campaign_path(@campaign) %>" method="get" class="edit-btn">
+<!--<form action="<%# edit_campaign_path(@campaign) %>" method="get" class="edit-btn">
   <button type="submit" 
      class="btn btn-info" />Edit<i class="fa fa-pencil"></i></button>
 </form>
-<%= link_to 'View analtyics', campaign_analytics_path(@campaign), :class => "btn btn-warning" %>
+<%# link_to 'View analtyics', campaign_analytics_path(@campaign), :class => "btn btn-warning campaign-analytics" %>-->
+<%= form_for @campaign, data: { confirm: 'Are you sure you want to delete this campaign? This will permanently affect your analytics.' }, :html => {method: :delete} do |f| %>
+        <button class="campaign-delete btn btn-danger" type="submit">Delete<i class="fa fa-trash-o"></i></button>
+      <% end %>
+
+      <form action="<%= edit_campaign_path(@campaign) %>" method="get">
+        <button type="submit" 
+           class="campaign-edit btn btn-info" />Edit<i class="fa fa-pencil"></i></button>
+      </form>
+      <form action="<%= campaign_analytics_path(@campaign) %>" method="get">
+        <button type="submit" 
+           class="campaign-analytics btn btn-primary" />Analytics<i class="fa fa-bar-chart-o"></i></button>
+      </form>
 <div class="btn twitter-hashtag-button">
 <a href="https://twitter.com/intent/tweet?button_hashtag=<%= @campaign.hashtag %>&text=New%20raffle%20-%20tweet%20%23<%= @campaign.hashtag[1..-1]%>%20to%20enter%2C%20or%20RT%20this%20message!%20Ends%20<%= @campaign.readable_end_time.gsub(" ","%20")%>!%20Powered%20by%20@pickerpool" class="twitter-hashtag-button" data-size="large" data-related="<%= current_user.screen_name %>">Tweet #<%=@campaign.hashtag%></a>
 
