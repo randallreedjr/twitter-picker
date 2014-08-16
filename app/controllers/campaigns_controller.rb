@@ -97,7 +97,7 @@ class CampaignsController < ApplicationController
   # POST /campaigns
   # POST /campaigns.json
   def create
-    if logged_in? && @campaign.user_id == current_user.id
+    if logged_in?
       @campaign = Campaign.new(campaign_params)
       @campaign.user_id = current_user.id
       @campaign.completed = false
