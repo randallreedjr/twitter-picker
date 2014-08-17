@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   # Sort campaigns by status
-  get '/campaigns/ongoing' => 'campaigns#ongoing'
-  get '/campaigns/completed' => 'campaigns#completed'
-  get '/campaigns/all' => 'campaigns#all'
+  get '/campaigns/ongoing' => 'campaigns#index'
+  get '/campaigns/completed' => 'campaigns#index'
+  get '/campaigns/all' => 'campaigns#index'
   get '/campaigns/admin' => 'campaigns#admin'
   #get '/campaigns/:id/tweet' => 'campaigns#tweet', as: :tweet_campaign
 

@@ -15,6 +15,10 @@ class Campaign < ActiveRecord::Base
     self.completed
   end
 
+  def status
+    self.completed ? "completed" : "ongoing"
+  end
+
   def start_time
     super.in_time_zone('Eastern Time (US & Canada)') if super
   end

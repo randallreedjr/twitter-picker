@@ -1,4 +1,4 @@
-<div class="panel panel-info">
+<div class="panel panel-info campaign-<%= @campaign.status %>">
   <div class="panel-heading">
     <div>
       <h3 class="panel-title campaign-title"><%= link_to @campaign.hashtag, @campaign %></h3>
@@ -28,7 +28,7 @@
       <% if @campaign.over? %>
       <span class="completed">  Completed </span>
       <% else %>
-      <span class="active">  Active </span>
+      <span class="active">  Ongoing </span>
       <% end %>
       </p>
     </div>

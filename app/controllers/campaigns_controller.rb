@@ -5,9 +5,14 @@ class CampaignsController < ApplicationController
   # GET /campaigns.json
   def index
     if logged_in?
-      @title = "Ongoing Campaigns"
-      @campaigns = Campaign.where(user_id: current_user.id, completed: false)
-      @active = "ongoing"
+      #binding.pry
+      active = request.env["REQUEST_PATH"].sub("/campaigns/","")
+      active = "ongoing" if active == ""
+      #@title = "Ongoing Campaigns"
+      #@campaigns = Campaign.where(user_id: current_user.id, completed: false)
+      @campaigns = Campaign.where(user_id: current_user.id)
+      @active = active
+
     else
       redirect_to root_url
     end
