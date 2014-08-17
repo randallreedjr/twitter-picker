@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       @user.followers_count = auth_hash[:extra][:raw_info][:followers_count]
       @user.save
       session[:user_id] = @user.id
-      redirect_to '/campaigns/ongoing'
+      redirect_to '/campaigns/'
     else
       redirect_to root_url
     end

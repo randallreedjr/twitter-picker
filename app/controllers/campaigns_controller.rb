@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
     if logged_in?
       #binding.pry
       active = request.env["REQUEST_PATH"].sub("/campaigns/","")
-      active = "ongoing" if active == ""
+      active = "ongoing" if (active == "" || active == "/campaigns")
       #@title = "Ongoing Campaigns"
       #@campaigns = Campaign.where(user_id: current_user.id, completed: false)
       @campaigns = Campaign.where(user_id: current_user.id)
