@@ -35,5 +35,5 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgres
+  adapter: postgresql
   url: <%= ENV["DATABASE_URL"] %>
