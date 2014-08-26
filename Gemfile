@@ -66,7 +66,6 @@ group :test, :development do
   gem "sqlite3"
   gem "pry"
   gem "guard-rspec", require: false
-  gem "thin"
 end
 
 group :production do
